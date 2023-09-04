@@ -1,0 +1,53 @@
+/* Stylizacja głównego kontenera */
+#person {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.29);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px;
+  }
+  
+  /* Stylizacja przycisków +/- */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Stylizacja input[type="text"] */
+  input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Stylizacja select */
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Stylizacja radio buttonów */
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  
+  /* Stylizacja podsumowania cech */
+  p {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
