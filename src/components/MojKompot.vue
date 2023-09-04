@@ -84,12 +84,17 @@ const obliczSumeCechOsobno = () => {
   return sumy;
 };
 const sprawdzRase = () => {
+  podrasa.value=null;
   zerowanieRassSta();
   zerowaniePodRassSta();
   usunWszystkieZdolnosci();
+  
   if (wybRasa.value === "Człowiek") {
     for (const statKey in stats) {
+      podrasa.value = null;
+
       rassStats[statKey].value = 1;
+
     }
   } else if (wybRasa.value === "Elf") {
     rassStats.ZRE.value = 2;
@@ -149,12 +154,15 @@ const sprawdzRase = () => {
 const sprawdzPodRase = () => {
   
   if(podrasa.value){
+    let ppodrasa = podrasa.value;
     zerowaniePodRassSta();
-
+    usunWszystkieZdolnosci();
+    sprawdzRase();
+    podrasa.value=ppodrasa;
   }
 
   //Podrasy Elfów
-  if(podrasa.value ==="Leśny"){
+  if(Klasa.value==="Elf" && podrasa.value ==="Leśny"){
   podRassStats.MAD.value +=1;
   dodajZdolnosc("Elfia szkoła walki");
   dodajZdolnosc("Maska dziczy")
@@ -192,7 +200,7 @@ const sprawdzPodRase = () => {
     dodajZdolnosc("Krasnoludzki trening zbrojny")
   }
   //Podrasy Gnomów
-  else if(podrasa.value ==="Leśny"){
+  else if(rasa.value==="Gnom" && podrasa.value ==="Leśny"){
     podRassStats.ZRE.value +=1;
     dodajZdolnosc("Urodzony iluzjonista");
     dodajZdolnosc("Mowa malych zwietząt");
