@@ -8,6 +8,8 @@ const wybRasa = ref(null);
 const imie = ref("");
 const nazwisko = ref("");
 const Klasa = ref(null);
+const zdolnosci = ref([]);
+
 const stats = {
   STR: ref(8),
   KON: ref(8),
@@ -55,15 +57,12 @@ const decreaseStat = (stat) => {
       stat.value-=1;
       punkty.value+=1;
   }
-    
     if(stat.value >=14){
     stat.value-=1;
     punkty.value +=2;
   }
-   
 }
 };
-
 const zerowaniePodRassSta = () => {
   for (const statKey in rassStats) {
     podRassStats[statKey].value = 0;
@@ -87,29 +86,62 @@ const obliczSumeCechOsobno = () => {
 const sprawdzRase = () => {
   zerowanieRassSta();
   zerowaniePodRassSta();
+  usunWszystkieZdolnosci();
   if (wybRasa.value === "Człowiek") {
     for (const statKey in stats) {
       rassStats[statKey].value = 1;
     }
   } else if (wybRasa.value === "Elf") {
-    
     rassStats.ZRE.value = 2;
+    dodajZdolnosc("Widzenie w ciemności");
+    dodajZdolnosc("Rodowód fey");
+    dodajZdolnosc("Trans")
   } else if (wybRasa.value === "Krasnolud") {
     rassStats.KON.value = 2;
-  } else if (wybRasa.value === "Półork") {
-    
+    dodajZdolnosc("Widzenie w ciemności");
+    dodajZdolnosc("Krasnoludzka odporność");
+    dodajZdolnosc("Krasnoludzki trening bojowy.");
+    dodajZdolnosc("Biegłość w używaniu narzędzi");
+    dodajZdolnosc("Wiedza o Kamieniu");
+
+
+  } else if (wybRasa.value === "Półelf"){
+    rassStats.CHA.value =1;
+    dodajZdolnosc("Widzenie w ciemności");
+    dodajZdolnosc("Rodowód fey");
+    dodajZdolnosc("Wszechstronność");  }
+
+   else if (wybRasa.value === "Półork") {
+    dodajZdolnosc("Widzenie w ciemności");
+    dodajZdolnosc("Groźny");
+    dodajZdolnosc("Wola życia");
+    dodajZdolnosc("Brutalne ataki");
+
     rassStats.STR.value = 2;
     rassStats.KON.value = 1;
   } else if (wybRasa.value === "Niziołek") {
-    
     rassStats.ZRE.value = 2;
+    dodajZdolnosc('Szczęście');
+    dodajZdolnosc('Odwaga');
+    dodajZdolnosc('Zwinność niziołka');
   } else if (wybRasa.value === "Gnom") {
     
     rassStats.INTE.value = 2;
+    dodajZdolnosc("Widzenie w ciemnośc");
+    dodajZdolnosc("Gnomi spryt");
   } else if (wybRasa.value === "Diabelstwo") {
-   
+   dodajZdolnosc("Widzenie w ciemnośc");
+   dodajZdolnosc("Piekielna odpotność");
+   dodajZdolnosc("Diabelska spuścizna");
     rassStats.INTE.value = 1;
     rassStats.CHA.value = 2;
+  } else if (wybRasa.value === "Drakon") {
+    dodajZdolnosc("Smoczy rodowód");
+    dodajZdolnosc("Zionięcie");
+    dodajZdolnosc("Odporność na obrażenia");
+
+    rassStats.STR.value = 2;
+    rassStats.CHA.value = 1;
   }
 };
 
@@ -124,47 +156,66 @@ const sprawdzPodRase = () => {
   //Podrasy Elfów
   if(podrasa.value ==="Leśny"){
   podRassStats.MAD.value +=1;
+  dodajZdolnosc("Elfia szkoła walki");
+  dodajZdolnosc("Maska dziczy")
 
   }
   else if(podrasa.value ==="Wysoki"){
   podRassStats.INTE.value +=1;
-
+  dodajZdolnosc("Elfia szkoła walki");
+  dodajZdolnosc("Magiczna sztuczka")
   }
   else if(podrasa.value === "Drow"){
     podRassStats.CHA.value +=1;
-
+    dodajZdolnosc("Wyjątkowe widzenie w ciemności");
+    dodajZdolnosc("Wrażliwość na światło słoneczne");
+    dodajZdolnosc("Magia drowów");
+    dodajZdolnosc("Szkoła walki drowów");
   }
   //Podrasy Niziołków
   else if(podrasa.value ==="Hardy"){
     podRassStats.KON.value +=1;
+    dodajZdolnosc("Odporność na trucizny")
 
   }
   else if(podrasa.value ==="Lekkostopy"){
     podRassStats.CHA.value +=1;
-
+    dodajZdolnosc("Niezauważalny")
   }
   //Podrasy Krasnoludów
   else if(podrasa.value === "Wzgórzowy"){
     podRassStats.MAD.value +=1;
-
+    dodajZdolnosc("Krasnoludzka wytrzymalość")
   }
   else if(podrasa.value ==="Górski"){
-    
     podRassStats.STR.value +=2;
-
+    dodajZdolnosc("Krasnoludzki trening zbrojny")
   }
   //Podrasy Gnomów
   else if(podrasa.value ==="Leśny"){
     podRassStats.ZRE.value +=1;
-
+    dodajZdolnosc("Urodzony iluzjonista");
+    dodajZdolnosc("Mowa malych zwietząt");
 }
   else if(podrasa.value ==="Skalny"){
     podRassStats.KON.value +=1;
+    dodajZdolnosc("Mądrość wynalazcy");
+    dodajZdolnosc("Majsterkowicz");
 
 
 }
 };
 
+const dodajZdolnosc = (zdolnosc) => {
+  zdolnosci.value.push(zdolnosc);
+};
+
+const usunZdolnosc = (index) => {
+  zdolnosci.value.splice(index, 1);
+};
+const usunWszystkieZdolnosci = () => {
+  zdolnosci.value = []; // Czyszczenie tablicy zdolności
+}
 </script>
 
 <!--Wybór Rasy -->
@@ -228,6 +279,7 @@ const sprawdzPodRase = () => {
         value="Hardy"
         v-model="podrasa"
         @change="sprawdzPodRase"
+        
       />Niziołek Hardy
 
       <input
@@ -415,7 +467,14 @@ const sprawdzPodRase = () => {
       <button @click="increaseStat(stats.CHA)">+</button>
     </p>
      </div>
-     
+      <div class="zdolności">
+  <h2>Zdolności</h2>
+  <ul>
+    <li v-for="(zdolnosc, index) in zdolnosci" :key="index">
+      {{ zdolnosc }}
+    </li>
+  </ul>
+</div>
 </template>
 <style scoped>
 @import "./styles.css";
