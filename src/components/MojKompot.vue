@@ -9,6 +9,9 @@ const imie = ref("");
 const nazwisko = ref("");
 const Klasa = ref(null);
 const zdolnosci = ref([]);
+const bieglosc = ref([]);
+
+const magia = ref(false);
 
 const stats = {
   STR: ref(8),
@@ -27,41 +30,39 @@ const rassStats = {
   CHA: ref(0),
 };
 const podRassStats = {
-
-STR: ref(0),
+  STR: ref(0),
   KON: ref(0),
   ZRE: ref(0),
   MAD: ref(0),
   INTE: ref(0),
   CHA: ref(0),
-}
+};
+const komCzar = ref([8]);
+
 const increaseStat = (stat) => {
-  if (stat.value < PunktMAX.value && punkty.value > 0){
-  if(stat.value >=13){
-    stat.value+=1;
-    punkty.value -=2;
-    
-  }
-    if(stat.value<13){
-      
-      stat.value+=1;
-      punkty.value-=1;
-    
-  }
+  if (stat.value < PunktMAX.value && punkty.value > 0) {
+    if (stat.value >= 13) {
+      stat.value += 1;
+      punkty.value -= 2;
+    }
+    if (stat.value < 13) {
+      stat.value += 1;
+      punkty.value -= 1;
+    }
   }
 };
 
 const decreaseStat = (stat) => {
   if (stat.value > startStat.value) {
-    if(stat.value<14){
-      stat.value-=1;
-      punkty.value+=1;
+    if (stat.value < 14) {
+      stat.value -= 1;
+      punkty.value += 1;
+    }
+    if (stat.value >= 14) {
+      stat.value -= 1;
+      punkty.value += 2;
+    }
   }
-    if(stat.value >=14){
-    stat.value-=1;
-    punkty.value +=2;
-  }
-}
 };
 const zerowaniePodRassSta = () => {
   for (const statKey in rassStats) {
@@ -78,29 +79,31 @@ const obliczSumeCechOsobno = () => {
   const sumy = {};
 
   for (const statKey in stats) {
-    sumy[statKey] = stats[statKey].value + rassStats[statKey].value+podRassStats[statKey].value;
+    sumy[statKey] =
+      stats[statKey].value +
+      rassStats[statKey].value +
+      podRassStats[statKey].value;
   }
 
   return sumy;
 };
 const sprawdzRase = () => {
-  podrasa.value=null;
+  podrasa.value = null;
   zerowanieRassSta();
   zerowaniePodRassSta();
   usunWszystkieZdolnosci();
-  
+
   if (wybRasa.value === "Człowiek") {
     for (const statKey in stats) {
       podrasa.value = null;
 
       rassStats[statKey].value = 1;
-
     }
   } else if (wybRasa.value === "Elf") {
     rassStats.ZRE.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Rodowód fey");
-    dodajZdolnosc("Trans")
+    dodajZdolnosc("Trans");
   } else if (wybRasa.value === "Krasnolud") {
     rassStats.KON.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
@@ -108,15 +111,12 @@ const sprawdzRase = () => {
     dodajZdolnosc("Krasnoludzki trening bojowy.");
     dodajZdolnosc("Biegłość w używaniu narzędzi");
     dodajZdolnosc("Wiedza o Kamieniu");
-
-
-  } else if (wybRasa.value === "Półelf"){
-    rassStats.CHA.value =1;
+  } else if (wybRasa.value === "Półelf") {
+    rassStats.CHA.value = 1;
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Rodowód fey");
-    dodajZdolnosc("Wszechstronność");  }
-
-   else if (wybRasa.value === "Półork") {
+    dodajZdolnosc("Wszechstronność");
+  } else if (wybRasa.value === "Półork") {
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Groźny");
     dodajZdolnosc("Wola życia");
@@ -126,18 +126,17 @@ const sprawdzRase = () => {
     rassStats.KON.value = 1;
   } else if (wybRasa.value === "Niziołek") {
     rassStats.ZRE.value = 2;
-    dodajZdolnosc('Szczęście');
-    dodajZdolnosc('Odwaga');
-    dodajZdolnosc('Zwinność niziołka');
+    dodajZdolnosc("Szczęście");
+    dodajZdolnosc("Odwaga");
+    dodajZdolnosc("Zwinność niziołka");
   } else if (wybRasa.value === "Gnom") {
-    
     rassStats.INTE.value = 2;
     dodajZdolnosc("Widzenie w ciemnośc");
     dodajZdolnosc("Gnomi spryt");
   } else if (wybRasa.value === "Diabelstwo") {
-   dodajZdolnosc("Widzenie w ciemnośc");
-   dodajZdolnosc("Piekielna odpotność");
-   dodajZdolnosc("Diabelska spuścizna");
+    dodajZdolnosc("Widzenie w ciemnośc");
+    dodajZdolnosc("Piekielna odpotność");
+    dodajZdolnosc("Diabelska spuścizna");
     rassStats.INTE.value = 1;
     rassStats.CHA.value = 2;
   } else if (wybRasa.value === "Drakon") {
@@ -152,66 +151,61 @@ const sprawdzRase = () => {
 
 //PODRASY, PODRASSY STATY
 const sprawdzPodRase = () => {
-  
-  if(podrasa.value){
+  if (podrasa.value) {
     let ppodrasa = podrasa.value;
     zerowaniePodRassSta();
     usunWszystkieZdolnosci();
     sprawdzRase();
-    podrasa.value=ppodrasa;
+    podrasa.value = ppodrasa;
   }
 
   //Podrasy Elfów
-  if(Klasa.value==="Elf" && podrasa.value ==="Leśny"){
-  podRassStats.MAD.value +=1;
-  dodajZdolnosc("Elfia szkoła walki");
-  dodajZdolnosc("Maska dziczy")
-
-  }
-  else if(podrasa.value ==="Wysoki"){
-  podRassStats.INTE.value +=1;
-  dodajZdolnosc("Elfia szkoła walki");
-  dodajZdolnosc("Magiczna sztuczka")
-  }
-  else if(podrasa.value === "Drow"){
-    podRassStats.CHA.value +=1;
+  if (rasa.value === "Elf" && podrasa.value === "Leśny") {
+    podRassStats.MAD.value += 1;
+    dodajZdolnosc("Elfia szkoła walki");
+    dodajZdolnosc("Maska dziczy");
+  } else if (podrasa.value === "Wysoki") {
+    podRassStats.INTE.value += 1;
+    dodajZdolnosc("Elfia szkoła walki");
+    dodajZdolnosc("Magiczna sztuczka");
+  } else if (podrasa.value === "Drow") {
+    podRassStats.CHA.value += 1;
     dodajZdolnosc("Wyjątkowe widzenie w ciemności");
     dodajZdolnosc("Wrażliwość na światło słoneczne");
     dodajZdolnosc("Magia drowów");
     dodajZdolnosc("Szkoła walki drowów");
   }
   //Podrasy Niziołków
-  else if(podrasa.value ==="Hardy"){
-    podRassStats.KON.value +=1;
-    dodajZdolnosc("Odporność na trucizny")
-
-  }
-  else if(podrasa.value ==="Lekkostopy"){
-    podRassStats.CHA.value +=1;
-    dodajZdolnosc("Niezauważalny")
+  else if (podrasa.value === "Hardy") {
+    podRassStats.KON.value += 1;
+    dodajZdolnosc("Odporność na trucizny");
+  } else if (podrasa.value === "Lekkostopy") {
+    podRassStats.CHA.value += 1;
+    dodajZdolnosc("Niezauważalny");
   }
   //Podrasy Krasnoludów
-  else if(podrasa.value === "Wzgórzowy"){
-    podRassStats.MAD.value +=1;
-    dodajZdolnosc("Krasnoludzka wytrzymalość")
-  }
-  else if(podrasa.value ==="Górski"){
-    podRassStats.STR.value +=2;
-    dodajZdolnosc("Krasnoludzki trening zbrojny")
+  else if (podrasa.value === "Wzgórzowy") {
+    podRassStats.MAD.value += 1;
+    dodajZdolnosc("Krasnoludzka wytrzymalość");
+  } else if (podrasa.value === "Górski") {
+    podRassStats.STR.value += 2;
+    dodajZdolnosc("Krasnoludzki trening zbrojny");
   }
   //Podrasy Gnomów
-  else if(rasa.value==="Gnom" && podrasa.value ==="Leśny"){
-    podRassStats.ZRE.value +=1;
+  else if (rasa.value === "Gnom" && podrasa.value === "Leśny") {
+    podRassStats.ZRE.value += 1;
     dodajZdolnosc("Urodzony iluzjonista");
     dodajZdolnosc("Mowa malych zwietząt");
-}
-  else if(podrasa.value ==="Skalny"){
-    podRassStats.KON.value +=1;
+  } else if (podrasa.value === "Skalny") {
+    podRassStats.KON.value += 1;
     dodajZdolnosc("Mądrość wynalazcy");
     dodajZdolnosc("Majsterkowicz");
-
-
-}
+  }
+};
+const sprawdzKlase = () => {
+  if (Klasa.value === "Mag") {
+    magia.value = true;
+  }
 };
 
 const dodajZdolnosc = (zdolnosc) => {
@@ -223,7 +217,7 @@ const usunZdolnosc = (index) => {
 };
 const usunWszystkieZdolnosci = () => {
   zdolnosci.value = []; // Czyszczenie tablicy zdolności
-}
+};
 </script>
 
 <!--Wybór Rasy -->
@@ -237,7 +231,8 @@ const usunWszystkieZdolnosci = () => {
       id="rasa"
       placeholder="wybierz rase"
       v-model="wybRasa"
-      @change="sprawdzRase">
+      @change="sprawdzRase"
+    >
       <option value="Człowiek">Człowiek</option>
       <option value="Krasnolud">Krasnolud</option>
       <option value="Elf">Elf</option>
@@ -247,7 +242,6 @@ const usunWszystkieZdolnosci = () => {
       <option value="Gnom">Gnom</option>
       <option value="Diabelstwo">Diabelstwo</option>
       <option value="Drakon">Drakon</option>
-
     </select>
 
     <!--Podrasy -->
@@ -287,7 +281,6 @@ const usunWszystkieZdolnosci = () => {
         value="Hardy"
         v-model="podrasa"
         @change="sprawdzPodRase"
-        
       />Niziołek Hardy
 
       <input
@@ -308,7 +301,6 @@ const usunWszystkieZdolnosci = () => {
         value="Biały"
         v-model="podrasa"
         @change="sprawdzPodRase"
-
       />Biały
 
       <input
@@ -375,7 +367,7 @@ const usunWszystkieZdolnosci = () => {
         @change="sprawdzPodRase"
       />Złoty
     </div>
-        <!--Krasnolud-->
+    <!--Krasnolud-->
 
     <div v-if="wybRasa === 'Krasnolud'">
       <p for="podrasa">Podrasa:</p>
@@ -385,7 +377,6 @@ const usunWszystkieZdolnosci = () => {
         value="Górski"
         v-model="podrasa"
         @change="sprawdzPodRase"
-
       />Krasnolud Górski
 
       <input
@@ -406,7 +397,6 @@ const usunWszystkieZdolnosci = () => {
         value="Skalny"
         v-model="podrasa"
         @change="sprawdzPodRase"
-
       />Gnom Skalny
 
       <input
@@ -417,9 +407,9 @@ const usunWszystkieZdolnosci = () => {
         @change="sprawdzPodRase"
       />Gnom Leśny
     </div>
-    <select name="Klas" id="klas" v-model="Klasa">
+    <select name="Klas" id="klas" v-model="Klasa" @change="sprawdzKlase">
       <option value="Wojownik">Wojownik</option>
-      <option value="Mag">Mag</option>Wojownik
+      <option value="Mag">Mag</option>
       <option value="Łotrzyk">Łotrzyk</option>
       <option value="Łowca">Łowca</option>
       <option value="Kleryk">Kleryk</option>
@@ -474,15 +464,53 @@ const usunWszystkieZdolnosci = () => {
       {{ obliczSumeCechOsobno().CHA }}
       <button @click="increaseStat(stats.CHA)">+</button>
     </p>
-     </div>
-      <div class="zdolności">
-  <h2>Zdolności</h2>
-  <ul>
-    <li v-for="(zdolnosc, index) in zdolnosci" :key="index">
-      {{ zdolnosc }}
-    </li>
-  </ul>
-</div>
+  </div>
+  <div class="zdolności">
+    <h2>Zdolności</h2>
+    <ul>
+      <li v-for="(zdolnosc, index) in zdolnosci" :key="index">
+        {{ zdolnosc }}
+      </li>
+    </ul>
+  </div>
+  <div class="biegłości">
+    <h2>Biegłości</h2>
+    <ul>
+      <li v-for="(bieglosc, index) in bieglosc" :key="index">
+        {{ bieglosc }}
+      </li>
+    </ul>
+  </div>
+  <div class="zaklecia" v-if="magia === true">
+    <table>
+      <table>
+        <thead>
+          <tr>
+            <th>Poziom</th>
+            <th>Komórka czaru</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>1</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </table>
+  </div>
 </template>
 <style scoped>
 @import "./styles.css";

@@ -1,60 +1,60 @@
 /* Stylizacja głównego kontenera */
 #person {
-    font-family: Arial, sans-serif;
-    background-color: rgba(0, 0, 0, 0.29);
-    padding: 20px;
-    border-radius: 5px;
-    margin: 20px;
-  }
-  
-  /* Stylizacja przycisków +/- */
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
-    margin: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Stylizacja input[type="text"] */
-  input[type="text"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  /* Stylizacja select */
-  select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  /* Stylizacja radio buttonów */
-  input[type="radio"] {
-    margin-right: 5px;
-  }
-  
-  /* Stylizacja podsumowania cech */
-  p {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  /* W twoim pliku CSS */
+  font-family: Arial, sans-serif;
+  background-color: rgba(0, 0, 0, 0.29);
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+/* Stylizacja przycisków +/- */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Stylizacja input[type="text"] */
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Stylizacja select */
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Stylizacja radio buttonów */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Stylizacja podsumowania cech */
+p {
+  font-weight: bold;
+  margin-top: 10px;
+}
+/* W twoim pliku CSS */
 
 .zdolności {
   position: absolute;
-  top: 50px;
+  top: 5%;
   left: 70%;
   background-color: #f2f2f2; /* Tło klasy zdolności */
   padding: 20px; /* Wewnętrzny padding */
@@ -69,6 +69,71 @@
 .zdolności p {
   margin: 5px 0; /* Odstęp między akapitami */
 }
+.biegłości {
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  background-color: #f2f2f2; /* Tło klasy zdolności */
+  padding: 20px; /* Wewnętrzny padding */
+  border: 1px solid #ddd; /* Ramka */
+  margin-top: 20px; /* Odstęp od góry */
+  font-size: 16px; /* Rozmiar czcionki */
+  color: #333; /* Kolor tekstu */
+  float: right; /* Ustawienie po prawej stronie */
+  width: 30%; /* Szerokość klasy zdolności, dostosuj według potrzeb */
+}
 
-/* Dodaj więcej stylów według swoich preferencji */
+.biegłości p {
+  margin: 5px 0; /* Odstęp między akapitami */
+  /* Dodaj więcej stylów według swoich preferencji */
+}
 
+table {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 1%;
+  height: 5%;
+  border-collapse: collapse;
+  margin-top: 5px;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+table th,
+table td {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Stylizacja nagłówków kolumn */
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Stylizacja wierszy na przemian */
+table tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+/* Stylizacja przycisków */
+button {
+  padding: 5px 10px;
+  background-color: Klasa#007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
