@@ -428,88 +428,131 @@ const usunWszystkieZdolnosci = () => {
 
     <p>Punkty doświadczenia: {{ punkty }}</p>
 
-    <p>
-      Siła:
-      <button @click="decreaseStat(stats.STR)">-</button>
-      {{ obliczSumeCechOsobno().STR }}
-      <button @click="increaseStat(stats.STR)">+</button>
-    </p>
-    <p>
-      Kondycja:
-      <button @click="decreaseStat(stats.KON)">-</button>
-      {{ obliczSumeCechOsobno().KON }}
-      <button @click="increaseStat(stats.KON)">+</button>
-    </p>
-    <p>
-      Zreczność:
-      <button @click="decreaseStat(stats.ZRE)">-</button>
-      {{ obliczSumeCechOsobno().ZRE }}
-      <button @click="increaseStat(stats.ZRE)">+</button>
-    </p>
-    <p>
-      Mądrość:
-      <button @click="decreaseStat(stats.MAD)">-</button>
-      {{ obliczSumeCechOsobno().MAD }}
-      <button @click="increaseStat(stats.MAD)">+</button>
-    </p>
-    <p>
-      Inteligencja:
-      <button @click="decreaseStat(stats.INTE)">-</button>
-      {{ obliczSumeCechOsobno().INTE }}
-      <button @click="increaseStat(stats.INTE)">+</button>
-    </p>
-    <p>
-      Charyzma:
-      <button @click="decreaseStat(stats.CHA)">-</button>
-      {{ obliczSumeCechOsobno().CHA }}
-      <button @click="increaseStat(stats.CHA)">+</button>
-    </p>
-  </div>
-  <div class="zdolności">
-    <h2>Zdolności</h2>
-    <ul>
-      <li v-for="(zdolnosc, index) in zdolnosci" :key="index">
-        {{ zdolnosc }}
-      </li>
-    </ul>
-  </div>
-  <div class="biegłości">
-    <h2>Biegłości</h2>
-    <ul>
-      <li v-for="(bieglosc, index) in bieglosc" :key="index">
-        {{ bieglosc }}
-      </li>
-    </ul>
-  </div>
-  <div class="zaklecia" v-if="magia === true">
-    <table>
+    <!-- Statystyki -->
+    <div class="stats">
+      <h2>Statystyki</h2>
+      <div class="stat">
+        <div class="stat-label">Siła:</div>
+        <div class="stat-value">
+          <button @click="decreaseStat(stats.STR)" class="stat-button-l">
+            -
+          </button>
+          {{ obliczSumeCechOsobno().STR }}
+          <button @click="increaseStat(stats.STR)" class="stat-button-p">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Zręczność:</span>
+        <div class="stat-value">
+          <button @click="decreaseStat(stats.ZRE)" class="stat-button-l">
+            -
+          </button>
+          {{ obliczSumeCechOsobno().ZRE }}
+
+          <button @click="increaseStat(stats.ZRE)" class="stat-button-p">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Kondycja:</span>
+        <div class="stat-value">
+          <button @click="decreaseStat(stats.KON)" class="stat-button-l">
+            -
+          </button>
+          {{ obliczSumeCechOsobno().KON }}
+
+          <button @click="increaseStat(stats.KON)" class="stat-button-p">
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span class="stat-label">Inteligencja:</span>
+        <div class="stat-value">
+          <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
+            -
+          </button>
+          {{ obliczSumeCechOsobno().INTE }}
+          <button @click="increaseStat(stats.INTE)" class="stat-button-p">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Mądrość:</span>
+        <div class="stat-value">
+          <button @click="decreaseStat(stats.MAD)" class="stat-button-l">
+            -
+          </button>
+          {{ obliczSumeCechOsobno().MAD }}
+          <button @click="increaseStat(stats.MAD)" class="stat-button-p">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Charyzma:</span>
+        <div class="stat-value">
+          <button @click="decreaseStat(stats.CHA)" class="stat-button-l">
+            -
+          </button>
+          {{ obliczSumeCechOsobno().CHA }}
+          <button @click="increaseStat(stats.CHA)" class="stat-button-p">
+            +
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="zdolności">
+      <h2>Zdolności</h2>
+      <ul>
+        <li v-for="(zdolnosc, index) in zdolnosci" :key="index">
+          {{ zdolnosc }}
+        </li>
+      </ul>
+    </div>
+    <div class="biegłości">
+      <h2>Biegłości</h2>
+      <ul>
+        <li v-for="(bieglosc, index) in bieglosc" :key="index">
+          {{ bieglosc }}
+        </li>
+      </ul>
+    </div>
+    <div class="zaklecia" v-if="magia === true">
       <table>
-        <thead>
-          <tr>
-            <th>Poziom</th>
-            <th>Komórka czaru</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>1</th>
-            <td>1</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>0</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>0</td>
-          </tr>
-          <tr>
-            <th>4</th>
-            <td>0</td>
-          </tr>
-        </tbody>
+        <table>
+          <thead>
+            <tr>
+              <th>Poziom</th>
+              <th>Komórka czaru</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1</th>
+              <td>1</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td>0</td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td>0</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
       </table>
-    </table>
+    </div>
   </div>
 </template>
 <style scoped>

@@ -3,6 +3,7 @@
   font-family: Arial, sans-serif;
   background-color: rgba(0, 0, 0, 0.29);
   padding: 20px;
+  width: 490px;
   border-radius: 5px;
   margin: 20px;
 }
@@ -135,5 +136,65 @@ button {
 }
 
 button:hover {
+  background-color: #0056b3;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  width: 300px;
+}
+
+.stat {
+  display: block;
+  width: 250px;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.stat-label {
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.stat-value {
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  width: auto; /* Szerokość 100% */
+  justify-content: flex-end; /* Tekst jest na końcu */
+  margin-right: 20%;
+}
+
+.stat-button-l {
+  background-color: #007bff;
+  position: absolute;
+  left: 45%;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0px 10px 0px 10px;
+
+  cursor: pointer;
+}
+.stat-button-p {
+  background-color: #007bff;
+  position: absolute;
+  left: 50.5%;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0px 10px 0px 10px;
+
+  cursor: pointer;
+}
+.stat-button:hover {
   background-color: #0056b3;
 }
