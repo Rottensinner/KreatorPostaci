@@ -72,6 +72,7 @@ p {
 }
 .biegłości {
   position: absolute;
+  display: flex;
   top: 30%;
   left: 70%;
   background-color: #f2f2f2; /* Tło klasy zdolności */
@@ -107,17 +108,20 @@ table td {
   padding: 5px;
   text-align: left;
   border: 1px solid #ccc;
+  text-align: center;
 }
 
 table th {
   background-color: #f2f2f2;
   font-weight: bold;
+  text-align: center;
 }
 
 /* Stylizacja nagłówków kolumn */
 table th {
   background-color: #f2f2f2;
   font-weight: bold;
+  text-align: center;
 }
 
 /* Stylizacja wierszy na przemian */
@@ -160,21 +164,27 @@ button:hover {
   float: left;
   font-weight: bold;
   margin-right: 10px;
+  width: 50%;
 }
 
 .stat-value {
-  background-color: yellow;
+  background-color: rgb(221, 221, 221);
   display: flex;
   align-items: center;
   width: auto; /* Szerokość 100% */
   justify-content: flex-end; /* Tekst jest na końcu */
-  margin-right: 20%;
+  
+}
+.stat-sume{
+  width: 10em;
+  text-align: center;
+  
+  
 }
 
 .stat-button-l {
   background-color: #007bff;
-  position: absolute;
-  left: 45%;
+  float: left;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -185,8 +195,7 @@ button:hover {
 }
 .stat-button-p {
   background-color: #007bff;
-  position: absolute;
-  left: 50.5%;
+  float: left;
   color: #fff;
   border: none;
   border-radius: 5px;

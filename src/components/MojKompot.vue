@@ -426,18 +426,18 @@ const usunWszystkieZdolnosci = () => {
     <p>Podrasa: {{ podrasa }}</p>
     <p>Klasa: {{ Klasa }}</p>
 
-    <p>Punkty doświadczenia: {{ punkty }}</p>
+    <p>Punkty Cech: {{ punkty }}</p>
 
     <!-- Statystyki -->
     <div class="stats">
       <h2>Statystyki</h2>
       <div class="stat">
-        <div class="stat-label">Siła:</div>
+        <span class="stat-label">Siła:</span>
         <div class="stat-value">
           <button @click="decreaseStat(stats.STR)" class="stat-button-l">
             -
           </button>
-          {{ obliczSumeCechOsobno().STR }}
+          <div class="stat-sume">{{ obliczSumeCechOsobno().STR }}</div>
           <button @click="increaseStat(stats.STR)" class="stat-button-p">
             +
           </button>
@@ -449,7 +449,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.ZRE)" class="stat-button-l">
             -
           </button>
-          {{ obliczSumeCechOsobno().ZRE }}
+          <div class="stat-sume">{{ obliczSumeCechOsobno().ZRE }}</div>
 
           <button @click="increaseStat(stats.ZRE)" class="stat-button-p">
             +
@@ -462,7 +462,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.KON)" class="stat-button-l">
             -
           </button>
-          {{ obliczSumeCechOsobno().KON }}
+          <div class="stat-sume">{{ obliczSumeCechOsobno().KON }}</div>
 
           <button @click="increaseStat(stats.KON)" class="stat-button-p">
             +
@@ -476,7 +476,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
             -
           </button>
-          {{ obliczSumeCechOsobno().INTE }}
+          <div class="stat-sume"> {{ obliczSumeCechOsobno().INTE }}</div>
           <button @click="increaseStat(stats.INTE)" class="stat-button-p">
             +
           </button>
@@ -488,7 +488,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.MAD)" class="stat-button-l">
             -
           </button>
-          {{ obliczSumeCechOsobno().MAD }}
+          <div class="stat-sume"> {{ obliczSumeCechOsobno().MAD }}</div>
           <button @click="increaseStat(stats.MAD)" class="stat-button-p">
             +
           </button>
@@ -500,7 +500,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.CHA)" class="stat-button-l">
             -
           </button>
-          {{ obliczSumeCechOsobno().CHA }}
+          <div class="stat-sume"> {{ obliczSumeCechOsobno().CHA }}</div>
           <button @click="increaseStat(stats.CHA)" class="stat-button-p">
             +
           </button>
@@ -534,19 +534,19 @@ const usunWszystkieZdolnosci = () => {
           </thead>
           <tbody>
             <tr>
-              <th>1</th>
+              <th>I</th>
               <td>1</td>
             </tr>
             <tr>
-              <th>2</th>
+              <th>II</th>
               <td>0</td>
             </tr>
             <tr>
-              <th>3</th>
+              <th>III</th>
               <td>0</td>
             </tr>
             <tr>
-              <th>4</th>
+              <th>IV</th>
               <td>0</td>
             </tr>
           </tbody>
