@@ -173,13 +173,10 @@ button:hover {
   align-items: center;
   width: auto; /* Szerokość 100% */
   justify-content: flex-end; /* Tekst jest na końcu */
-  
 }
-.stat-sume{
+.stat-sume {
   width: 10em;
   text-align: center;
-  
-  
 }
 
 .stat-button-l {
@@ -206,4 +203,15 @@ button:hover {
 }
 .stat-button:hover {
   background-color: #0056b3;
+}
+
+.mod_stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  width: 100px;
 }

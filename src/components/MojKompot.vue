@@ -1,3 +1,7 @@
+Kolejność wprowadzania Sekcji 1.Cele lekcji 2.Metody I formy pracy 3.Środki
+dydaktyczne 4.Odniesienie do podstawy programowej I Czas pracy 5.Komentarz
+merytoryczny 6.Przebieg lekcji Do każdego działu rozkład materiału jako chapter
+Info Slug Przyroda przykładowy slag do sekcji: Przyr-Kl4-D01-l1-s01-rm
 <script setup>
 import { ref } from "vue";
 const podrasa = ref(null);
@@ -84,7 +88,6 @@ const obliczSumeCechOsobno = () => {
       rassStats[statKey].value +
       podRassStats[statKey].value;
   }
-
   return sumy;
 };
 const sprawdzRase = () => {
@@ -217,6 +220,21 @@ const usunZdolnosc = (index) => {
 };
 const usunWszystkieZdolnosci = () => {
   zdolnosci.value = []; // Czyszczenie tablicy zdolności
+};
+const liczModyfikator = () => {
+  const sumy = {};
+  for (const statKey in stats) {
+    sumy[statKey] =
+      (stats[statKey].value +
+        rassStats[statKey].value +
+        podRassStats[statKey].value -
+        10) /
+      2;
+    for (const statKey in stats) {
+      sumy[statKey] = Math.floor(sumy[statKey]);
+    }
+  }
+  return sumy;
 };
 </script>
 
@@ -426,18 +444,18 @@ const usunWszystkieZdolnosci = () => {
     <p>Podrasa: {{ podrasa }}</p>
     <p>Klasa: {{ Klasa }}</p>
 
-    <p>Punkty Cech: {{ punkty }}</p>
+    <p>Punkty doświadczenia: {{ punkty }}</p>
 
     <!-- Statystyki -->
     <div class="stats">
       <h2>Statystyki</h2>
       <div class="stat">
-        <span class="stat-label">Siła:</span>
+        <div class="stat-label">Siła:</div>
         <div class="stat-value">
           <button @click="decreaseStat(stats.STR)" class="stat-button-l">
             -
           </button>
-          <div class="stat-sume">{{ obliczSumeCechOsobno().STR }}</div>
+          {{ obliczSumeCechOsobno().STR }}
           <button @click="increaseStat(stats.STR)" class="stat-button-p">
             +
           </button>
@@ -449,7 +467,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.ZRE)" class="stat-button-l">
             -
           </button>
-          <div class="stat-sume">{{ obliczSumeCechOsobno().ZRE }}</div>
+          {{ obliczSumeCechOsobno().ZRE }}
 
           <button @click="increaseStat(stats.ZRE)" class="stat-button-p">
             +
@@ -462,7 +480,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.KON)" class="stat-button-l">
             -
           </button>
-          <div class="stat-sume">{{ obliczSumeCechOsobno().KON }}</div>
+          {{ obliczSumeCechOsobno().KON }}
 
           <button @click="increaseStat(stats.KON)" class="stat-button-p">
             +
@@ -476,7 +494,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
             -
           </button>
-          <div class="stat-sume"> {{ obliczSumeCechOsobno().INTE }}</div>
+          {{ obliczSumeCechOsobno().INTE }}
           <button @click="increaseStat(stats.INTE)" class="stat-button-p">
             +
           </button>
@@ -488,7 +506,7 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.MAD)" class="stat-button-l">
             -
           </button>
-          <div class="stat-sume"> {{ obliczSumeCechOsobno().MAD }}</div>
+          {{ obliczSumeCechOsobno().MAD }}
           <button @click="increaseStat(stats.MAD)" class="stat-button-p">
             +
           </button>
@@ -500,10 +518,33 @@ const usunWszystkieZdolnosci = () => {
           <button @click="decreaseStat(stats.CHA)" class="stat-button-l">
             -
           </button>
-          <div class="stat-sume"> {{ obliczSumeCechOsobno().CHA }}</div>
+          {{ obliczSumeCechOsobno().CHA }}
           <button @click="increaseStat(stats.CHA)" class="stat-button-p">
             +
           </button>
+        </div>
+      </div>
+    </div>
+    <div class="mod_stat">
+      <h4>Modyfikatory</h4>
+      <div class="mod">
+        <div class="mod-value">
+          {{ liczModyfikator().STR }}
+        </div>
+        <div class="mod-value">
+          {{ liczModyfikator().ZRE }}
+        </div>
+        <div class="mod-value">
+          {{ liczModyfikator().KON }}
+        </div>
+        <div class="mod-value">
+          {{ liczModyfikator().INTE }}
+        </div>
+        <div class="mod-value">
+          {{ liczModyfikator().MAD }}
+        </div>
+        <div class="mod-value">
+          {{ liczModyfikator().CHA }}
         </div>
       </div>
     </div>
@@ -534,19 +575,19 @@ const usunWszystkieZdolnosci = () => {
           </thead>
           <tbody>
             <tr>
-              <th>I</th>
+              <th>1</th>
               <td>1</td>
             </tr>
             <tr>
-              <th>II</th>
+              <th>2</th>
               <td>0</td>
             </tr>
             <tr>
-              <th>III</th>
+              <th>3</th>
               <td>0</td>
             </tr>
             <tr>
-              <th>IV</th>
+              <th>4</th>
               <td>0</td>
             </tr>
           </tbody>
