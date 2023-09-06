@@ -224,3 +224,18 @@ button:hover {
   display: flex;
   align-items: baseline;
 }
+
+.spell {
+  position: absolute;
+  display: flex;
+  top: 30%;
+  left: 0%;
+  background-color: #f2f2f2; /* Tło klasy zdolności */
+  padding: 20px; /* Wewnętrzny padding */
+  border: 1px solid #ddd; /* Ramka */
+  margin-top: 20px; /* Odstęp od góry */
+  font-size: 16px; /* Rozmiar czcionki */
+  color: #333; /* Kolor tekstu */
+  float: right; /* Ustawienie po prawej stronie */
+  width: 20%; /* Szerokość klasy zdolności, dostosuj według potrzeb */
+}

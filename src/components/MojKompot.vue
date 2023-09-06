@@ -13,6 +13,7 @@ const imie = ref("");
 const nazwisko = ref("");
 const Klasa = ref(null);
 const zdolnosci = ref([]);
+const spell = ref([]);
 const bieglosc = ref([]);
 
 const magia = ref(false);
@@ -107,6 +108,7 @@ const sprawdzRase = () => {
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Rodowód fey");
     dodajZdolnosc("Trans");
+    dodajSpell("kula ognia");
   } else if (wybRasa.value === "Krasnolud") {
     rassStats.KON.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
@@ -214,9 +216,12 @@ const sprawdzKlase = () => {
 const dodajZdolnosc = (zdolnosc) => {
   zdolnosci.value.push(zdolnosc);
 };
+const dodajSpell = (spell) => {
+  spell.value.push(spell);
+};
 
-const usunZdolnosc = (index) => {
-  zdolnosci.value.splice(index, 1);
+const spellZdolnosc = (index) => {
+  spell.value.splice(index, 1);
 };
 const usunWszystkieZdolnosci = () => {
   zdolnosci.value = []; // Czyszczenie tablicy zdolności
@@ -415,8 +420,7 @@ const liczModyfikator = () => {
         value="Skalny"
         v-model="podrasa"
         @change="sprawdzPodRase"
-      />Gnom Skalny
-
+      />Gnom Skalny zdolnosc
       <input
         type="radio"
         id="Gnom_Leśny"
@@ -565,35 +569,42 @@ const liczModyfikator = () => {
         </li>
       </ul>
     </div>
+
     <div class="zaklecia" v-if="magia === true">
       <table>
-        <table>
-          <thead>
-            <tr>
-              <th>Poziom</th>
-              <th>Komórka czaru</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>1</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
+        <thead>
+          <tr>
+            <th>Poziom</th>
+            <th>Komórka czaru</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>1</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>0</td>
+          </tr>
+        </tbody>
       </table>
+    </div>
+    <div class="spell">
+      <h2>Spell list</h2>
+      <ul>
+        <li v-for="(spell, index) in spell" :key="index">
+          {{ spell }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
