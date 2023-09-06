@@ -1,9 +1,12 @@
 /* Stylizacja głównego kontenera */
+body{
+  background-image: url(https://getwallpapers.com/wallpaper/full/2/6/5/60031.jpg);
+}
 #person {
   font-family: Arial, sans-serif;
   background-color: rgba(0, 0, 0, 0.29);
   padding: 20px;
-  width: 490px;
+  width: 90%;
   border-radius: 5px;
   margin: 20px;
 }
@@ -244,4 +247,18 @@ button:hover {
 .liczMod{
   width: 20px;
   text-align: center;
+}
+.postep{
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  display: block;
+  width: 190px;
+  height: auto;
+  background-color:#dddddd88;
+  padding: 10px;
+  border-radius: 5%;
+}
+.postep>p{
+  display: block;
 }

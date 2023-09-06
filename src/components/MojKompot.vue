@@ -243,6 +243,18 @@ const liczModyfikator = () => {
 <!--Wybór Rasy -->
 
 <template>
+  <div class="postep">
+   <p> <input type="radio" name="wyb" > Imie</p>
+   <p> <input type="radio" name="wyb" > Rasa</p>
+   <p> <input type="radio" name="wyb" > Podrasa</p>
+   <p> <input type="radio" name="wyb" > Klasa</p>
+   
+   <p> <input type="radio" name="wyb" > Podklasa</p>
+  <p>  <input type="radio" name="wyb" > Pochodzenie</p>
+   <p> <input type="radio" name="wyb" > Wyposarzenie</p>
+   <p> <input type="radio" name="wyb" > Zaklęcia</p>
+   <p> <input type="radio" name="wyb" > Statystyki {{ 27-punkty }} / 27</p>
+  </div>
   <div id="person">
     <input type="text" placeholder="Imie" v-model="imie" />
 

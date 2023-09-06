@@ -2,6 +2,7 @@
 
 /* Resetowanie domyślnych stylów */
 * {
+  
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,6 +16,9 @@
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+  background-image: url(https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_960_720.jpg);
+ 
+  background-repeat: repeat;
 }
 
 .container {
@@ -90,6 +94,7 @@ select {
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
+  border-radius: 20%;
 }
 .person{
   background-color: black;
