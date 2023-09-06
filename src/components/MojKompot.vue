@@ -445,106 +445,107 @@ const liczModyfikator = () => {
     <p>Klasa: {{ Klasa }}</p>
 
     <p>Punkty doświadczenia: {{ punkty }}</p>
+    <div class="kontener">
+      <!-- Statystyki -->
+      <div class="stats">
+        <h2>Statystyki</h2>
+        <div class="stat">
+          <div class="stat-label">Siła:</div>
+          <div class="stat-value">
+            <button @click="decreaseStat(stats.STR)" class="stat-button-l">
+              -
+            </button>
+            {{ obliczSumeCechOsobno().STR }}
+            <button @click="increaseStat(stats.STR)" class="stat-button-p">
+              +
+            </button>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Zręczność:</span>
+          <div class="stat-value">
+            <button @click="decreaseStat(stats.ZRE)" class="stat-button-l">
+              -
+            </button>
+            {{ obliczSumeCechOsobno().ZRE }}
 
-    <!-- Statystyki -->
-    <div class="stats">
-      <h2>Statystyki</h2>
-      <div class="stat">
-        <div class="stat-label">Siła:</div>
-        <div class="stat-value">
-          <button @click="decreaseStat(stats.STR)" class="stat-button-l">
-            -
-          </button>
-          {{ obliczSumeCechOsobno().STR }}
-          <button @click="increaseStat(stats.STR)" class="stat-button-p">
-            +
-          </button>
+            <button @click="increaseStat(stats.ZRE)" class="stat-button-p">
+              +
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="stat">
-        <span class="stat-label">Zręczność:</span>
-        <div class="stat-value">
-          <button @click="decreaseStat(stats.ZRE)" class="stat-button-l">
-            -
-          </button>
-          {{ obliczSumeCechOsobno().ZRE }}
+        <div class="stat">
+          <span class="stat-label">Kondycja:</span>
+          <div class="stat-value">
+            <button @click="decreaseStat(stats.KON)" class="stat-button-l">
+              -
+            </button>
+            {{ obliczSumeCechOsobno().KON }}
 
-          <button @click="increaseStat(stats.ZRE)" class="stat-button-p">
-            +
-          </button>
+            <button @click="increaseStat(stats.KON)" class="stat-button-p">
+              +
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="stat">
-        <span class="stat-label">Kondycja:</span>
-        <div class="stat-value">
-          <button @click="decreaseStat(stats.KON)" class="stat-button-l">
-            -
-          </button>
-          {{ obliczSumeCechOsobno().KON }}
 
-          <button @click="increaseStat(stats.KON)" class="stat-button-p">
-            +
-          </button>
+        <div class="stat">
+          <span class="stat-label">Inteligencja:</span>
+          <div class="stat-value">
+            <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
+              -
+            </button>
+            {{ obliczSumeCechOsobno().INTE }}
+            <button @click="increaseStat(stats.INTE)" class="stat-button-p">
+              +
+            </button>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Mądrość:</span>
+          <div class="stat-value">
+            <button @click="decreaseStat(stats.MAD)" class="stat-button-l">
+              -
+            </button>
+            {{ obliczSumeCechOsobno().MAD }}
+            <button @click="increaseStat(stats.MAD)" class="stat-button-p">
+              +
+            </button>
+          </div>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Charyzma:</span>
+          <div class="stat-value">
+            <button @click="decreaseStat(stats.CHA)" class="stat-button-l">
+              -
+            </button>
+            {{ obliczSumeCechOsobno().CHA }}
+            <button @click="increaseStat(stats.CHA)" class="stat-button-p">
+              +
+            </button>
+          </div>
         </div>
       </div>
-
-      <div class="stat">
-        <span class="stat-label">Inteligencja:</span>
-        <div class="stat-value">
-          <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
-            -
-          </button>
-          {{ obliczSumeCechOsobno().INTE }}
-          <button @click="increaseStat(stats.INTE)" class="stat-button-p">
-            +
-          </button>
-        </div>
-      </div>
-      <div class="stat">
-        <span class="stat-label">Mądrość:</span>
-        <div class="stat-value">
-          <button @click="decreaseStat(stats.MAD)" class="stat-button-l">
-            -
-          </button>
-          {{ obliczSumeCechOsobno().MAD }}
-          <button @click="increaseStat(stats.MAD)" class="stat-button-p">
-            +
-          </button>
-        </div>
-      </div>
-      <div class="stat">
-        <span class="stat-label">Charyzma:</span>
-        <div class="stat-value">
-          <button @click="decreaseStat(stats.CHA)" class="stat-button-l">
-            -
-          </button>
-          {{ obliczSumeCechOsobno().CHA }}
-          <button @click="increaseStat(stats.CHA)" class="stat-button-p">
-            +
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="mod_stat">
-      <h4>Modyfikatory</h4>
-      <div class="mod">
-        <div class="mod-value">
-          {{ liczModyfikator().STR }}
-        </div>
-        <div class="mod-value">
-          {{ liczModyfikator().ZRE }}
-        </div>
-        <div class="mod-value">
-          {{ liczModyfikator().KON }}
-        </div>
-        <div class="mod-value">
-          {{ liczModyfikator().INTE }}
-        </div>
-        <div class="mod-value">
-          {{ liczModyfikator().MAD }}
-        </div>
-        <div class="mod-value">
-          {{ liczModyfikator().CHA }}
+      <div class="mod_stat">
+        <h2>Modyfikatory</h2>
+        <div class="mod">
+          <div class="mod-value">
+            {{ liczModyfikator().STR }}
+          </div>
+          <div class="mod-value">
+            {{ liczModyfikator().ZRE }}
+          </div>
+          <div class="mod-value">
+            {{ liczModyfikator().KON }}
+          </div>
+          <div class="mod-value">
+            {{ liczModyfikator().INTE }}
+          </div>
+          <div class="mod-value">
+            {{ liczModyfikator().MAD }}
+          </div>
+          <div class="mod-value">
+            {{ liczModyfikator().CHA }}
+          </div>
         </div>
       </div>
     </div>

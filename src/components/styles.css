@@ -150,7 +150,7 @@ button:hover {
   padding: 10px;
   border: 1px solid #ccc;
   margin-top: 20px;
-  width: 300px;
+  width: 280px;
 }
 
 .stat {
@@ -210,8 +210,17 @@ button:hover {
   flex-direction: column;
   align-items: center;
   background-color: #f7f7f7;
-  padding: 10px;
+  padding: 10px 0px 14px;
   border: 1px solid #ccc;
   margin-top: 20px;
-  width: 100px;
+  width: 170px;
+}
+.mod-value {
+  padding: 5px 10px 5px 10px;
+  margin: 6px;
+}
+
+.kontener {
+  display: flex;
+  align-items: baseline;
 }
