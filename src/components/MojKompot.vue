@@ -15,6 +15,7 @@ const Klasa = ref(null);
 const zdolnosci = ref([]);
 const spell = ref([]);
 const bieglosc = ref([]);
+const lvl = ref(1);
 
 const magia = ref(false);
 
@@ -312,7 +313,7 @@ const liczModyfikator = () => {
         value="Lekkostopy"
         v-model="podrasa"
         @change="sprawdzPodRase"
-      />Niziołek_Lekkostopy
+      />Niziołek Lekkostopy
 
       <!--Podrasy drakonów-->
     </div>
@@ -444,8 +445,8 @@ const liczModyfikator = () => {
       <option value="Zaklinacz">Zaklinacz</option>
     </select>
     <p>Imie: {{ imie }}</p>
-    <p>Rasa: {{ wybRasa }}</p>
-    <p>Podrasa: {{ podrasa }}</p>
+    <p>Rasa: {{ wybRasa }} {{ podrasa }}</p>
+    <p>Poziom {{ lvl }}</p>
     <p>Klasa: {{ Klasa }}</p>
 
     <p>Punkty doświadczenia: {{ punkty }}</p>
@@ -598,7 +599,7 @@ const liczModyfikator = () => {
         </tbody>
       </table>
     </div>
-    <div class="spell">
+    <div class="spell" v-if="magia === true">
       <h2>Spell list</h2>
       <ul>
         <li v-for="(spell, index) in spell" :key="index">
