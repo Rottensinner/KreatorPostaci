@@ -460,7 +460,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.STR)" class="stat-button-l">
               -
             </button>
-            {{ obliczSumeCechOsobno().STR }}
+            <div class="liczMod">{{ obliczSumeCechOsobno().STR }}</div>
             <button @click="increaseStat(stats.STR)" class="stat-button-p">
               +
             </button>
@@ -472,7 +472,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.ZRE)" class="stat-button-l">
               -
             </button>
-            {{ obliczSumeCechOsobno().ZRE }}
+            <div class="liczMod">{{ obliczSumeCechOsobno().ZRE }}</div>
 
             <button @click="increaseStat(stats.ZRE)" class="stat-button-p">
               +
@@ -485,7 +485,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.KON)" class="stat-button-l">
               -
             </button>
-            {{ obliczSumeCechOsobno().KON }}
+            <div class="liczMod">{{ obliczSumeCechOsobno().KON }}</div>
 
             <button @click="increaseStat(stats.KON)" class="stat-button-p">
               +
@@ -499,7 +499,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
               -
             </button>
-            {{ obliczSumeCechOsobno().INTE }}
+           <div class="liczMod">{{ obliczSumeCechOsobno().INTE }}</div>
             <button @click="increaseStat(stats.INTE)" class="stat-button-p">
               +
             </button>
@@ -511,7 +511,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.MAD)" class="stat-button-l">
               -
             </button>
-            {{ obliczSumeCechOsobno().MAD }}
+            <div class="liczMod">{{ obliczSumeCechOsobno().MAD }}</div>
             <button @click="increaseStat(stats.MAD)" class="stat-button-p">
               +
             </button>
@@ -523,7 +523,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.CHA)" class="stat-button-l">
               -
             </button>
-            {{ obliczSumeCechOsobno().CHA }}
+            <div class="liczMod">{{ obliczSumeCechOsobno().CHA }}</div>
             <button @click="increaseStat(stats.CHA)" class="stat-button-p">
               +
             </button>
@@ -534,22 +534,22 @@ const liczModyfikator = () => {
         <h2>Modyfikatory</h2>
         <div class="mod">
           <div class="mod-value">
-            {{ liczModyfikator().STR }}
+            <div  class="liczMod">{{ liczModyfikator().STR }}</div>
           </div>
           <div class="mod-value">
-            {{ liczModyfikator().ZRE }}
+            <div  class="liczMod">{{ liczModyfikator().ZRE }}</div>
           </div>
           <div class="mod-value">
-            {{ liczModyfikator().KON }}
+            <div  class="liczMod">{{ liczModyfikator().KON }}</div>
           </div>
           <div class="mod-value">
-            {{ liczModyfikator().INTE }}
+            <div  class="liczMod">{{ liczModyfikator().INTE }}</div>
           </div>
           <div class="mod-value">
-            {{ liczModyfikator().MAD }}
+            <div  class="liczMod">{{ liczModyfikator().MAD }}</div>
           </div>
           <div class="mod-value">
-            {{ liczModyfikator().CHA }}
+            <div  class="liczMod">{{ liczModyfikator().CHA }}</div>
           </div>
         </div>
       </div>
