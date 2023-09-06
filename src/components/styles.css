@@ -151,6 +151,7 @@ button:hover {
   border: 1px solid #ccc;
   margin-top: 20px;
   width: 280px;
+  height: 270px;
 }
 
 .stat {
@@ -214,6 +215,7 @@ button:hover {
   border: 1px solid #ccc;
   margin-top: 20px;
   width: 170px;
+  height: 270px;
 }
 .mod-value {
   padding: 5px 10px 5px 10px;

@@ -1,7 +1,3 @@
-Kolejność wprowadzania Sekcji 1.Cele lekcji 2.Metody I formy pracy 3.Środki
-dydaktyczne 4.Odniesienie do podstawy programowej I Czas pracy 5.Komentarz
-merytoryczny 6.Przebieg lekcji Do każdego działu rozkład materiału jako chapter
-Info Slug Przyroda przykładowy slag do sekcji: Przyr-Kl4-D01-l1-s01-rm
 <script setup>
 import { ref } from "vue";
 const podrasa = ref(null);
