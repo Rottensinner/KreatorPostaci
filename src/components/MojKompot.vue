@@ -43,7 +43,7 @@ const komCzar = ref([8]);
 
 const increaseStat = (stat) => {
   if (stat.value < PunktMAX.value && punkty.value > 0) {
-    if (stat.value >= 13 && punkty.value >= 2) {
+    if (stat.value >= 13 && punkty.value > 2) {
       stat.value += 1;
       punkty.value -= 2;
     }
@@ -251,7 +251,7 @@ const liczModyfikator = () => {
 
     <p><input type="radio" name="wyb" /> Podklasa</p>
     <p><input type="radio" name="wyb" /> Pochodzenie</p>
-    <p><input type="radio" name="wyb" /> Wyposarzenie</p>
+    <p><input type="radio" name="wyb" /> Wyposażenie</p>
     <p><input type="radio" name="wyb" /> Zaklęcia</p>
     <p><input type="radio" name="wyb" /> Statystyki {{ 27 - punkty }} / 27</p>
   </div>
