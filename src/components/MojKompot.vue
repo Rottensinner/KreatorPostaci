@@ -43,7 +43,7 @@ const komCzar = ref([8]);
 
 const increaseStat = (stat) => {
   if (stat.value < PunktMAX.value && punkty.value > 0) {
-    if (stat.value >= 13) {
+    if (stat.value >= 13 && punkty.value >= 2) {
       stat.value += 1;
       punkty.value -= 2;
     }
@@ -244,16 +244,16 @@ const liczModyfikator = () => {
 
 <template>
   <div class="postep">
-   <p> <input type="radio" name="wyb" > Imie</p>
-   <p> <input type="radio" name="wyb" > Rasa</p>
-   <p> <input type="radio" name="wyb" > Podrasa</p>
-   <p> <input type="radio" name="wyb" > Klasa</p>
-   
-   <p> <input type="radio" name="wyb" > Podklasa</p>
-  <p>  <input type="radio" name="wyb" > Pochodzenie</p>
-   <p> <input type="radio" name="wyb" > Wyposarzenie</p>
-   <p> <input type="radio" name="wyb" > Zaklęcia</p>
-   <p> <input type="radio" name="wyb" > Statystyki {{ 27-punkty }} / 27</p>
+    <p><input type="radio" name="wyb" /> Imie</p>
+    <p><input type="radio" name="wyb" /> Rasa</p>
+    <p><input type="radio" name="wyb" /> Podrasa</p>
+    <p><input type="radio" name="wyb" /> Klasa</p>
+
+    <p><input type="radio" name="wyb" /> Podklasa</p>
+    <p><input type="radio" name="wyb" /> Pochodzenie</p>
+    <p><input type="radio" name="wyb" /> Wyposarzenie</p>
+    <p><input type="radio" name="wyb" /> Zaklęcia</p>
+    <p><input type="radio" name="wyb" /> Statystyki {{ 27 - punkty }} / 27</p>
   </div>
   <div id="person">
     <input type="text" placeholder="Imie" v-model="imie" />
@@ -507,7 +507,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
               -
             </button>
-           <div class="liczMod">{{ obliczSumeCechOsobno().INTE }}</div>
+            <div class="liczMod">{{ obliczSumeCechOsobno().INTE }}</div>
             <button @click="increaseStat(stats.INTE)" class="stat-button-p">
               +
             </button>
@@ -542,22 +542,22 @@ const liczModyfikator = () => {
         <h2>Modyfikatory</h2>
         <div class="mod">
           <div class="mod-value">
-            <div  class="liczMod">{{ liczModyfikator().STR }}</div>
+            <div class="liczMod">{{ liczModyfikator().STR }}</div>
           </div>
           <div class="mod-value">
-            <div  class="liczMod">{{ liczModyfikator().ZRE }}</div>
+            <div class="liczMod">{{ liczModyfikator().ZRE }}</div>
           </div>
           <div class="mod-value">
-            <div  class="liczMod">{{ liczModyfikator().KON }}</div>
+            <div class="liczMod">{{ liczModyfikator().KON }}</div>
           </div>
           <div class="mod-value">
-            <div  class="liczMod">{{ liczModyfikator().INTE }}</div>
+            <div class="liczMod">{{ liczModyfikator().INTE }}</div>
           </div>
           <div class="mod-value">
-            <div  class="liczMod">{{ liczModyfikator().MAD }}</div>
+            <div class="liczMod">{{ liczModyfikator().MAD }}</div>
           </div>
           <div class="mod-value">
-            <div  class="liczMod">{{ liczModyfikator().CHA }}</div>
+            <div class="liczMod">{{ liczModyfikator().CHA }}</div>
           </div>
         </div>
       </div>
