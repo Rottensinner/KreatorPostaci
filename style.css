@@ -16,7 +16,7 @@
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
-  background-image: url(https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_960_720.jpg);
+  background-image: url(https://i.pinimg.com/564x/16/b6/3e/16b63e9f7b85f067da134c4402d94398.jpg);
  
   background-repeat: repeat;
 }
@@ -94,7 +94,7 @@ select {
   font-weight: bold;
   text-align: center;
   margin-top: 20px;
-  border-radius: 20%;
+  
 }
 .person{
   background-color: black;
