@@ -43,7 +43,7 @@ const komCzar = ref([8]);
 
 const increaseStat = (stat) => {
   if (stat.value < PunktMAX.value && punkty.value > 0) {
-    if (stat.value >= 13 && punkty.value > 2) {
+    if (stat.value >= 13) {
       stat.value += 1;
       punkty.value -= 2;
     }
@@ -243,20 +243,20 @@ const liczModyfikator = () => {
 <!--Wybór Rasy -->
 
 <template>
-  <div class="postep">
-    <p><input type="radio" name="wyb" /> Imie</p>
-    <p><input type="radio" name="wyb" /> Rasa</p>
-    <p><input type="radio" name="wyb" /> Podrasa</p>
-    <p><input type="radio" name="wyb" /> Klasa</p>
-
-    <p><input type="radio" name="wyb" /> Podklasa</p>
-    <p><input type="radio" name="wyb" /> Pochodzenie</p>
-    <p><input type="radio" name="wyb" /> Wyposażenie</p>
-    <p><input type="radio" name="wyb" /> Zaklęcia</p>
-    <p><input type="radio" name="wyb" /> Statystyki {{ 27 - punkty }} / 27</p>
-  </div>
+  <!-- <div class="postep">
+   <p> <input type="radio" name="wyb" > Imie</p>
+   <p> <input type="radio" name="wyb" > Rasa</p>
+   <p> <input type="radio" name="wyb" > Podrasa</p>
+   <p> <input type="radio" name="wyb" > Klasa</p>
+   
+   <p> <input type="radio" name="wyb" > Podklasa</p>
+  <p>  <input type="radio" name="wyb" > Pochodzenie</p>
+   <p> <input type="radio" name="wyb" > Wyposarzenie</p>
+   <p> <input type="radio" name="wyb" > Zaklęcia</p>
+   <p> <input type="radio" name="wyb" > Statystyki {{ 27-punkty }} / 27</p>
+  </div> -->
   <div id="person">
-    <input type="text" placeholder="Imie" v-model="imie" />
+    <!-- <input type="text" placeholder="Imie" v-model="imie" />
 
     <select
       name="rasa"
@@ -276,8 +276,6 @@ const liczModyfikator = () => {
       <option value="Drakon">Drakon</option>
     </select>
 
-    <!--Podrasy -->
-    <!--Podrasy Elfów-->
     <div v-if="wybRasa === 'Elf'">
       <p for="podrasa">Podrasa:</p>
       <input
@@ -303,7 +301,6 @@ const liczModyfikator = () => {
         @change="sprawdzPodRase"
       />Drow
 
-      <!-- Podrasy niziołków -->
     </div>
     <div v-if="wybRasa === 'Niziołek'">
       <p for="podrasa">Podrasa:</p>
@@ -323,7 +320,6 @@ const liczModyfikator = () => {
         @change="sprawdzPodRase"
       />Niziołek Lekkostopy
 
-      <!--Podrasy drakonów-->
     </div>
     <div v-if="wybRasa === 'Drakon'">
       <p for="podrasa">Smoczy Rodowód:</p>
@@ -399,7 +395,6 @@ const liczModyfikator = () => {
         @change="sprawdzPodRase"
       />Złoty
     </div>
-    <!--Krasnolud-->
 
     <div v-if="wybRasa === 'Krasnolud'">
       <p for="podrasa">Podrasa:</p>
@@ -420,7 +415,6 @@ const liczModyfikator = () => {
       />Krasnolud Wzgórzowy
     </div>
 
-    <!--Gnom-->
     <div v-if="wybRasa === 'Gnom'">
       <p for="podrasa">Podrasa:</p>
       <input
@@ -458,8 +452,50 @@ const liczModyfikator = () => {
     <p>Klasa: {{ Klasa }}</p>
 
     <p>Punkty doświadczenia: {{ punkty }}</p>
-    <div class="kontener">
-      <!-- Statystyki -->
+   
+
+    <div class="zaklecia" v-if="magia === true">
+      <table>
+        <thead>
+          <tr>
+            <th>Poziom</th>
+            <th>Komórka czaru</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>1</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>0</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="spell" v-if="magia === true">
+      <h2>Spell list</h2>
+      <ul>
+        <li v-for="(spell, index) in spell" :key="index">
+          {{ spell }}
+        </li>
+      </ul>
+    </div> -->
+    <div class="first">
+      <div class="top">
+
+      </div>
+      <div class="down">
+        <div class="kontener">
       <div class="stats">
         <h2>Statystyki</h2>
         <div class="stat">
@@ -507,7 +543,7 @@ const liczModyfikator = () => {
             <button @click="decreaseStat(stats.INTE)" class="stat-button-l">
               -
             </button>
-            <div class="liczMod">{{ obliczSumeCechOsobno().INTE }}</div>
+           <div class="liczMod">{{ obliczSumeCechOsobno().INTE }}</div>
             <button @click="increaseStat(stats.INTE)" class="stat-button-p">
               +
             </button>
@@ -542,22 +578,22 @@ const liczModyfikator = () => {
         <h2>Modyfikatory</h2>
         <div class="mod">
           <div class="mod-value">
-            <div class="liczMod">{{ liczModyfikator().STR }}</div>
+            <div  class="liczMod">{{ liczModyfikator().STR }}</div>
           </div>
           <div class="mod-value">
-            <div class="liczMod">{{ liczModyfikator().ZRE }}</div>
+            <div  class="liczMod">{{ liczModyfikator().ZRE }}</div>
           </div>
           <div class="mod-value">
-            <div class="liczMod">{{ liczModyfikator().KON }}</div>
+            <div  class="liczMod">{{ liczModyfikator().KON }}</div>
           </div>
           <div class="mod-value">
-            <div class="liczMod">{{ liczModyfikator().INTE }}</div>
+            <div  class="liczMod">{{ liczModyfikator().INTE }}</div>
           </div>
           <div class="mod-value">
-            <div class="liczMod">{{ liczModyfikator().MAD }}</div>
+            <div  class="liczMod">{{ liczModyfikator().MAD }}</div>
           </div>
           <div class="mod-value">
-            <div class="liczMod">{{ liczModyfikator().CHA }}</div>
+            <div  class="liczMod">{{ liczModyfikator().CHA }}</div>
           </div>
         </div>
       </div>
@@ -578,43 +614,10 @@ const liczModyfikator = () => {
         </li>
       </ul>
     </div>
+      </div>
+    </div>
+    <div class="secend"></div>
 
-    <div class="zaklecia" v-if="magia === true">
-      <table>
-        <thead>
-          <tr>
-            <th>Poziom</th>
-            <th>Komórka czaru</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>1</th>
-            <td>1</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>0</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>0</td>
-          </tr>
-          <tr>
-            <th>4</th>
-            <td>0</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="spell" v-if="magia === true">
-      <h2>Spell list</h2>
-      <ul>
-        <li v-for="(spell, index) in spell" :key="index">
-          {{ spell }}
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 <style scoped>

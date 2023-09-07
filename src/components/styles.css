@@ -1,16 +1,42 @@
 /* Stylizacja głównego kontenera */
 body{
-  background-image: url(https://getwallpapers.com/wallpaper/full/2/6/5/60031.jpg);
+  background-image: url(https://i.pinimg.com/564x/16/b6/3e/16b63e9f7b85f067da134c4402d94398.jpg);
 }
 #person {
   font-family: Arial, sans-serif;
-  background-color: rgba(0, 0, 0, 0.29);
-  padding: 20px;
-  width: 90%;
-  border-radius: 5px;
-  margin: 20px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.29);
+    top: 5%;
+    left: 5%;
+    right: 5%;
+    height: 90%;
+    width: 90%;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    background:url(C:\Users\48731\Alfa\assets\papierus.png);
+    background-size: 100% 100%;
+    
+}
+.imie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10%;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-end;
 }
 
+/* Stylizacja inputa */
+.imie input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center; /* Wyśrodkowanie tekstu w polu input */
+}
 /* Stylizacja przycisków +/- */
 button {
   background-color: #007bff;
@@ -33,6 +59,8 @@ input[type="text"] {
   border-radius: 3px;
   width: 100%;
   margin-bottom: 10px;
+  text-align: center;
+  background-color: #7c7c7c50;
 }
 
 /* Stylizacja select */
@@ -60,9 +88,9 @@ p {
   position: absolute;
   top: 5%;
   right: 0px;
-  background-color: #f2f2f2; /* Tło klasy zdolności */
+  background-color: #f2f2f200; /* Tło klasy zdolności */
   padding: 20px; /* Wewnętrzny padding */
-  border: 1px solid #ddd; /* Ramka */
+  border: 1px solid #040303b7; /* Ramka */
   margin-top: 20px; /* Odstęp od góry */
   font-size: 16px; /* Rozmiar czcionki */
   color: #333; /* Kolor tekstu */
@@ -78,9 +106,9 @@ p {
   display: flex;
   top: 30%;
   right: 0px;
-  background-color: #f2f2f2; /* Tło klasy zdolności */
+  background-color: #f2f2f200; /* Tło klasy zdolności */
   padding: 20px; /* Wewnętrzny padding */
-  border: 1px solid #ddd; /* Ramka */
+  border: 1px solid #dddddd00; /* Ramka */
   margin-top: 20px; /* Odstęp od góry */
   font-size: 16px; /* Rozmiar czcionki */
   color: #333; /* Kolor tekstu */
@@ -149,9 +177,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f7f7f7;
+  background-color: #f7f7f700;
   padding: 10px;
-  border: 1px solid #ccc;
   margin-top: 20px;
   width: 280px;
   height: 270px;
@@ -261,4 +288,29 @@ button:hover {
 }
 .postep>p{
   display: block;
+}
+.first,.secend{
+  display: flex;
+  height: 100%;
+  flex-wrap: nowrap;
+  margin-left: 15%
+}
+.first{
+  background-color: rgba(255, 255, 0, 0.066);
+  width: 60%;
+  flex-wrap: wrap;
+}
+.top{
+  height: 50%;
+  width: 100%;
+  background: rgba(0, 0, 255, 0.071);
+}
+.down{
+  height: 50%;
+  width: 100%;
+  background: rgba(238, 130, 238, 0.166);
+}
+.secend{
+  background-color: rgba(255, 0, 0, 0.09);
+  width: 40%;
 }
