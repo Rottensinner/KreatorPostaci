@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+const isPodrasa = ref(false);
 const podrasa = ref(null);
 const startStat = ref(8);
 let punkty = ref(27);
@@ -43,7 +44,7 @@ const komCzar = ref([8]);
 
 const increaseStat = (stat) => {
   if (stat.value < PunktMAX.value && punkty.value > 0) {
-    if (stat.value >= 13 && punkty.value > 2) {
+    if (stat.value >= 13 && punkty.value >= 2) {
       stat.value += 1;
       punkty.value -= 2;
     }
@@ -88,11 +89,24 @@ const obliczSumeCechOsobno = () => {
   }
   return sumy;
 };
+
+//Jeśli rasa ma dostępną podrasę to zwraca true
+const czyPodrasa=(wybRasa)=>{
+ if(wybRasa.value==="Elf" || wybRasa.value ==="Krasnolud" || wybRasa.value=== "Gnom" || wybRasa.value === "Niziołek" || wybRasa.value=== "Drakon"){
+  
+  return true;
+ }
+ else {
+ return false;
+ }
+}
 const sprawdzRase = () => {
   podrasa.value = null;
+  
   zerowanieRassSta();
   zerowaniePodRassSta();
   usunWszystkieZdolnosci();
+  
 
   if (wybRasa.value === "Człowiek") {
     for (const statKey in stats) {
@@ -101,12 +115,16 @@ const sprawdzRase = () => {
       rassStats[statKey].value = 1;
     }
   } else if (wybRasa.value === "Elf") {
+    
+
     rassStats.ZRE.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Rodowód fey");
     dodajZdolnosc("Trans");
-    dodajSpell("kula ognia");
+    //dodajSpell("kula ognia");
   } else if (wybRasa.value === "Krasnolud") {
+    
+
     rassStats.KON.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Krasnoludzka odporność");
@@ -127,21 +145,28 @@ const sprawdzRase = () => {
     rassStats.STR.value = 2;
     rassStats.KON.value = 1;
   } else if (wybRasa.value === "Niziołek") {
+    
+
     rassStats.ZRE.value = 2;
     dodajZdolnosc("Szczęście");
     dodajZdolnosc("Odwaga");
     dodajZdolnosc("Zwinność niziołka");
   } else if (wybRasa.value === "Gnom") {
+   
+
     rassStats.INTE.value = 2;
     dodajZdolnosc("Widzenie w ciemnośc");
     dodajZdolnosc("Gnomi spryt");
   } else if (wybRasa.value === "Diabelstwo") {
+    
     dodajZdolnosc("Widzenie w ciemnośc");
     dodajZdolnosc("Piekielna odpotność");
     dodajZdolnosc("Diabelska spuścizna");
     rassStats.INTE.value = 1;
     rassStats.CHA.value = 2;
   } else if (wybRasa.value === "Drakon") {
+    
+
     dodajZdolnosc("Smoczy rodowód");
     dodajZdolnosc("Zionięcie");
     dodajZdolnosc("Odporność na obrażenia");
@@ -149,6 +174,9 @@ const sprawdzRase = () => {
     rassStats.STR.value = 2;
     rassStats.CHA.value = 1;
   }
+  isPodrasa.value = czyPodrasa(wybRasa);
+
+ 
 };
 
 //PODRASY, PODRASSY STATY
@@ -161,11 +189,11 @@ const sprawdzPodRase = () => {
     podrasa.value = ppodrasa;
   }
 
-  //Podrasy Elfów
   if (rasa.value === "Elf" && podrasa.value === "Leśny") {
     podRassStats.MAD.value += 1;
     dodajZdolnosc("Elfia szkoła walki");
     dodajZdolnosc("Maska dziczy");
+    //alert(9999999999999999)
   } else if (podrasa.value === "Wysoki") {
     podRassStats.INTE.value += 1;
     dodajZdolnosc("Elfia szkoła walki");
@@ -243,12 +271,14 @@ const liczModyfikator = () => {
 <!--Wybór Rasy -->
 
 <template>
+
+  <!-- Pierdolni z lewej -->
   <div class="postep">
     <p><input type="radio" name="wyb" /> Imie</p>
     <p><input type="radio" name="wyb" /> Rasa</p>
-    <p><input type="radio" name="wyb" /> Podrasa</p>
+    <p v-if="isPodrasa==true && wybRasa !== 'Drakon'"><input type="radio" name="wyb" /> Podrasa</p>
+    <p v-if="wybRasa === 'Drakon'"><input type="radio" name="wyb" /> Smoczy rodowód</p>
     <p><input type="radio" name="wyb" /> Klasa</p>
-
     <p><input type="radio" name="wyb" /> Podklasa</p>
     <p><input type="radio" name="wyb" /> Pochodzenie</p>
     <p><input type="radio" name="wyb" /> Wyposażenie</p>
@@ -287,7 +317,6 @@ const liczModyfikator = () => {
         v-model="podrasa"
         @change="sprawdzPodRase"
       />Elf leśny
-
       <input
         type="radio"
         id="Elf_Wysoki"
