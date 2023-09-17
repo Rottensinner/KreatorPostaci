@@ -1,5 +1,11 @@
 <script setup>
 import { ref } from "vue";
+import spellData from "@/components/spells.json";
+const props = defineProps({
+  imie: String,
+}) 
+const zaklecia = ref(spellData.zaklecia);
+
 const isPodrasa = ref(false);
 const podrasa = ref(null);
 const startStat = ref(8);
@@ -9,8 +15,9 @@ const wybRasa = ref(null);
 const imie = ref("");
 const nazwisko = ref("");
 const Klasa = ref(null);
+const spellname = ref("");
 const zdolnosci = ref([]);
-const spell = ref([]);
+
 const bieglosc = ref([]);
 const lvl = ref(1);
 
@@ -639,11 +646,26 @@ const liczModyfikator = () => {
     <div class="spell" v-if="magia === true">
       <h2>Spell list</h2>
       <ul>
-        <li v-for="(spell, index) in spell" :key="index">
-          {{ spell }}
-        </li>
+        
       </ul>
     </div>
+    <div class="spell" v-if="magia === true">
+      <h2>Spell List</h2>
+    <ul>
+      <input type="text" v-model="spellname">
+      <!-- Mechanizm wyszukiwania spelli -->
+      <div v-for="(spellItem, index) in zaklecia" :key="index">
+        <div v-if="spellItem.name === spellname">
+        <h3>{{ spellItem.name }}</h3>
+        <p>Level: {{ spellItem.level }}</p>
+        <p>Description: {{ spellItem.description }}</p>
+        <p>Damage: {{ spellItem.damage }}</p>
+        <!-- Możesz dodać więcej informacji o zaklęciach, jeśli jest to konieczne -->
+      
+      </div>
+      </div>
+    </ul>
+</div>
   </div>
 </template>
 <style scoped>

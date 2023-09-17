@@ -232,17 +232,18 @@ button:hover {
 
 .spell {
   position: absolute;
-  display: flex;
-  top: 30%;
-  left: 0%;
-  background-color: #f2f2f2; /* Tło klasy zdolności */
-  padding: 20px; /* Wewnętrzny padding */
-  border: 1px solid #ddd; /* Ramka */
-  margin-top: 20px; /* Odstęp od góry */
-  font-size: 16px; /* Rozmiar czcionki */
-  color: #333; /* Kolor tekstu */
-  float: right; /* Ustawienie po prawej stronie */
-  width: 300px; /* Szerokość klasy zdolności, dostosuj według potrzeb */
+    display: flex;
+    top: 30%;
+    left: 0%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    float: right;
+    width: 300px;
+    flex-direction: column;
 }
 .liczMod{
   width: 20px;
