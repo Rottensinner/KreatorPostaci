@@ -1,9 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import spellData from "@/components/spells.json";
-const props = defineProps({
-  imie: String,
-}) 
+
 const zaklecia = ref(spellData.zaklecia);
 
 const isPodrasa = ref(false);
@@ -273,6 +271,7 @@ const liczModyfikator = () => {
   }
   return sumy;
 };
+
 </script>
 
 <!--Wybór Rasy -->
@@ -474,6 +473,8 @@ const liczModyfikator = () => {
         @change="sprawdzPodRase"
       />Gnom Leśny
     </div>
+    <Cosiek :wybRasa="wybRasa" @ustawWybRasa="ustawWybRasa" />
+
     <select name="Klas" id="klas" v-model="Klasa" @change="sprawdzKlase">
       <option value="Wojownik">Wojownik</option>
       <option value="Mag">Mag</option>

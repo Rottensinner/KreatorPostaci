@@ -1,24 +1,19 @@
-<script >
+<script>
+import WybRasy from './components/WybRasy.vue';
+import NadCos from './components/NadCos.vue'
 
-import MojKompot from './components/MojKompot.vue'
-import Cosiek from './components/Cosiek.vue';
-import CosiekDziecko from './components/CosiekDziecko.vue';
-
-export default{
+export default {
   name: 'App',
   components: {
-    MojKompot,
-    Cosiek,
-    CosiekDziecko
+    WybRasy,
+    NadCos // Dodaj komponent Nad do sekcji components
   }
 }
 </script>
 
 <template>
- <div class="App">
-<MojKompot />
-<Cosiek/>
-<CosiekDziecko/>
-
- </div>
+  <div class="App">
+    <NadCos/>
+    
+  </div>
 </template>
