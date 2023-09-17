@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mongodb": "^6.1.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
