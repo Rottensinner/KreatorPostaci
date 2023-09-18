@@ -29,11 +29,14 @@ export default {
   },
   methods: {
     // 
-    WybranieRasy(data , IsPodRasa){
+    WybranieRasy(data , IsPodRasa, staty, podrasa){
       console.log("wybrana rasa:", data);
-      this.Rasa= data
-      this.IsPodrasa = IsPodRasa
+      this.Rasa= data;
+      this.IsPodrasa = IsPodRasa;
+     
       console.log("Posiada Podrasę:", IsPodRasa);
+      console.log("Staty :", this.staty.STR);
+      console.log("Podrasa ",podrasa)
 
     },
     
