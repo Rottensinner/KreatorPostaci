@@ -96,22 +96,25 @@ const obliczSumeCechOsobno = () => {
 };
 
 //Jeśli rasa ma dostępną podrasę to zwraca true
-const czyPodrasa=(wybRasa)=>{
- if(wybRasa.value==="Elf" || wybRasa.value ==="Krasnolud" || wybRasa.value=== "Gnom" || wybRasa.value === "Niziołek" || wybRasa.value=== "Drakon"){
-  
-  return true;
- }
- else {
- return false;
- }
-}
+const czyPodrasa = (wybRasa) => {
+  if (
+    wybRasa.value === "Elf" ||
+    wybRasa.value === "Krasnolud" ||
+    wybRasa.value === "Gnom" ||
+    wybRasa.value === "Niziołek" ||
+    wybRasa.value === "Drakon"
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
 const sprawdzRase = () => {
   podrasa.value = null;
-  
+
   zerowanieRassSta();
   zerowaniePodRassSta();
   usunWszystkieZdolnosci();
-  
 
   if (wybRasa.value === "Człowiek") {
     for (const statKey in stats) {
@@ -120,16 +123,12 @@ const sprawdzRase = () => {
       rassStats[statKey].value = 1;
     }
   } else if (wybRasa.value === "Elf") {
-    
-
     rassStats.ZRE.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Rodowód fey");
     dodajZdolnosc("Trans");
     //dodajSpell("kula ognia");
   } else if (wybRasa.value === "Krasnolud") {
-    
-
     rassStats.KON.value = 2;
     dodajZdolnosc("Widzenie w ciemności");
     dodajZdolnosc("Krasnoludzka odporność");
@@ -139,6 +138,8 @@ const sprawdzRase = () => {
   } else if (wybRasa.value === "Półelf") {
     rassStats.CHA.value = 1;
     dodajZdolnosc("Widzenie w ciemności");
+    usunWszystkieZdolnosci();
+
     dodajZdolnosc("Rodowód fey");
     dodajZdolnosc("Wszechstronność");
   } else if (wybRasa.value === "Półork") {
@@ -150,28 +151,21 @@ const sprawdzRase = () => {
     rassStats.STR.value = 2;
     rassStats.KON.value = 1;
   } else if (wybRasa.value === "Niziołek") {
-    
-
     rassStats.ZRE.value = 2;
     dodajZdolnosc("Szczęście");
     dodajZdolnosc("Odwaga");
     dodajZdolnosc("Zwinność niziołka");
   } else if (wybRasa.value === "Gnom") {
-   
-
     rassStats.INTE.value = 2;
     dodajZdolnosc("Widzenie w ciemnośc");
     dodajZdolnosc("Gnomi spryt");
   } else if (wybRasa.value === "Diabelstwo") {
-    
     dodajZdolnosc("Widzenie w ciemnośc");
     dodajZdolnosc("Piekielna odpotność");
     dodajZdolnosc("Diabelska spuścizna");
     rassStats.INTE.value = 1;
     rassStats.CHA.value = 2;
   } else if (wybRasa.value === "Drakon") {
-    
-
     dodajZdolnosc("Smoczy rodowód");
     dodajZdolnosc("Zionięcie");
     dodajZdolnosc("Odporność na obrażenia");
@@ -180,8 +174,6 @@ const sprawdzRase = () => {
     rassStats.CHA.value = 1;
   }
   isPodrasa.value = czyPodrasa(wybRasa);
-
- 
 };
 
 //PODRASY, PODRASSY STATY
@@ -271,19 +263,21 @@ const liczModyfikator = () => {
   }
   return sumy;
 };
-
 </script>
 
 <!--Wybór Rasy -->
 
 <template>
-
   <!-- Pierdolni z lewej -->
   <div class="postep">
     <p><input type="radio" name="wyb" /> Imie</p>
     <p><input type="radio" name="wyb" /> Rasa</p>
-    <p v-if="isPodrasa==true && wybRasa !== 'Drakon'"><input type="radio" name="wyb" /> Podrasa</p>
-    <p v-if="wybRasa === 'Drakon'"><input type="radio" name="wyb" /> Smoczy rodowód</p>
+    <p v-if="isPodrasa == true && wybRasa !== 'Drakon'">
+      <input type="radio" name="wyb" /> Podrasa
+    </p>
+    <p v-if="wybRasa === 'Drakon'">
+      <input type="radio" name="wyb" /> Smoczy rodowód
+    </p>
     <p><input type="radio" name="wyb" /> Klasa</p>
     <p><input type="radio" name="wyb" /> Podklasa</p>
     <p><input type="radio" name="wyb" /> Pochodzenie</p>
@@ -359,6 +353,7 @@ const liczModyfikator = () => {
       />Niziołek Lekkostopy
 
       <!--Podrasy drakonów-->
+      usunWszystkieZdolnosci();
     </div>
     <div v-if="wybRasa === 'Drakon'">
       <p for="podrasa">Smoczy Rodowód:</p>
@@ -646,27 +641,24 @@ const liczModyfikator = () => {
     </div>
     <div class="spell" v-if="magia === true">
       <h2>Spell list</h2>
-      <ul>
-        
-      </ul>
+      <ul></ul>
     </div>
     <div class="spell" v-if="magia === true">
       <h2>Spell List</h2>
-    <ul>
-      <input type="text" v-model="spellname">
-      <!-- Mechanizm wyszukiwania spelli -->
-      <div v-for="(spellItem, index) in zaklecia" :key="index">
-        <div v-if="spellItem.name === spellname">
-        <h3>{{ spellItem.name }}</h3>
-        <p>Level: {{ spellItem.level }}</p>
-        <p>Description: {{ spellItem.description }}</p>
-        <p>Damage: {{ spellItem.damage }}</p>
-        <!-- Możesz dodać więcej informacji o zaklęciach, jeśli jest to konieczne -->
-      
-      </div>
-      </div>
-    </ul>
-</div>
+      <ul>
+        <input type="text" v-model="spellname" />
+        <!-- Mechanizm wyszukiwania spelli -->
+        <div v-for="(spellItem, index) in zaklecia" :key="index">
+          <div v-if="spellItem.name === spellname">
+            <h3>{{ spellItem.name }}</h3>
+            <p>Level: {{ spellItem.level }}</p>
+            <p>Description: {{ spellItem.description }}</p>
+            <p>Damage: {{ spellItem.damage }}</p>
+            <!-- Możesz dodać więcej informacji o zaklęciach, jeśli jest to konieczne -->
+          </div>
+        </div>
+      </ul>
+    </div>
   </div>
 </template>
 <style scoped>
