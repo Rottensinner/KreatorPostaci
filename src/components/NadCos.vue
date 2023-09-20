@@ -35,7 +35,11 @@ export default {
       this.IsPodrasa = IsPodRasa;
 
       console.log("Posiada Podrasę:", IsPodRasa);
-      console.log("Staty :", this.staty.STR);
+      for (const statKey in this.staty) {
+          this.staty[statKey] +=staty[statKey];
+        console.log(statKey, ":",this.staty[statKey])
+        
+      }
       if (IsPodRasa) console.log("Podrasa ", podrasa);
     },
   },
