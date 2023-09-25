@@ -33,7 +33,6 @@ export default {
       console.log("wybrana rasa:", data);
       this.Rasa = data;
       this.IsPodrasa = IsPodRasa;
-
       console.log("Posiada Podrasę:", IsPodRasa);
       for (const statKey in this.staty) {
           this.staty[statKey] +=staty[statKey];

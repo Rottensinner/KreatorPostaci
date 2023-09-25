@@ -181,7 +181,7 @@ export default {
   emits: ["wyslanieDoNADCOS"],
   data() {
     return {
-      wybRasa: "", // Przypisz początkową wartość zmiennej wybRasa w sekcji data
+      wybRasa: "",
       IsPodRasa: false,
       podrasa: "",
       rassStats: {
@@ -207,9 +207,9 @@ export default {
       this.IsPodRasa = this.czyPodrasa(this.wybRasa);
 
       if (this.IsPodRasa && this.podrasa === "") {
-        console.log("Wybierz podrase");
+        console.log("Wybierz podrasę");
       } else if (!this.wybRasa) {
-        alert("Wybierz rase");
+        alert("Wybierz rasę");
       } else {
         this.sprawdzRase(this.wybRasa, this.rassStats);
         
@@ -223,17 +223,8 @@ export default {
       }
     },
     czyPodrasa(wybRasa) {
-      if (
-        wybRasa === "Elf" ||
-        wybRasa === "Krasnolud" ||
-        wybRasa === "Gnom" ||
-        wybRasa === "Niziołek" ||
-        wybRasa === "Drakon"
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+      const podrasaRasy = ["Elf", "Krasnolud", "Gnom", "Niziołek", "Drakon"];
+      return podrasaRasy.includes(wybRasa);
     },
     sprawdzRase(wybRasa, rassStats) {
       for (const statKey in rassStats) {
@@ -276,39 +267,42 @@ export default {
           break;
       }
     },
-    
-
     sprawdzPodRase() {
+      this.zerowanieStat(this.podRassStats);
       if (this.wybRasa === "Elf" && this.podrasa === "Leśny") {
-        this.podRassStats.MAD += 1;
+        this.podRassStats.MAD = 1;
       } else if (this.podrasa === "Wysoki") {
-        this.podRassStats.INTE += 1;
+        this.podRassStats.INTE = 1;
       } else if (this.podrasa === "Drow") {
-        this.podRassStats.CHA += 1;
+        this.podRassStats.CHA = 1;
       }
-      //Podrasy Niziołków
+      // Podrasy Niziołków
       else if (this.podrasa === "Hardy") {
-        this.podRassStats.KON += 1;
+        this.podRassStats.KON = 1;
       } else if (this.podrasa === "Lekkostopy") {
-        this.podRassStats.CHA += 1;
+        this.podRassStats.CHA = 1;
       }
-      //Podrasy Krasnoludów
+      // Podrasy Krasnoludów
       else if (this.podrasa === "Wzgórzowy") {
-        this.podRassStats.MAD += 1;
+        this.podRassStats.MAD = 1;
       } else if (this.podrasa === "Górski") {
-        this.podRassStats.STR += 2;
+        this.podRassStats.STR = 2;
       }
-      //Podrasy Gnomów
+      // Podrasy Gnomów
       else if (this.wybRasa === "Gnom" && this.podrasa === "Leśny") {
-        this.podRassStats.ZRE += 1;
+        this.podRassStats.ZRE = 1;
       } else if (this.podrasa === "Skalny") {
-        this.podRassStats.KON += 1;
+        this.podRassStats.KON = 1;
       }
-      
     },
     zerowanieStat(podRassStats) {
       for (const statKey in podRassStats) {
         podRassStats[statKey] = 0;
+      }
+    },
+    sumaStat() {
+      for (const statKey in this.podRassStats) {
+        this.rassStats[statKey] += this.podRassStats[statKey];
       }
     },
   },
