@@ -1,5 +1,8 @@
 <template>
   <div>
+    <label>Imie</label>
+    <input type="text" >
+    <label>Rasa</label>
     <select name="rasa" id="rasa" placeholder="wybierz rase" v-model="wybRasa">
       <option value="Człowiek">Człowiek</option>
       <option value="Krasnolud">Krasnolud</option>
@@ -175,7 +178,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref , watch} from "vue";
 
 export default {
   emits: ["wyslanieDoNADCOS"],
@@ -218,7 +221,8 @@ export default {
           this.wybRasa,
           this.IsPodRasa,
           this.rassStats,
-          this.podrasa
+          this.podrasa,
+          this.podRassStats
         );
       }
     },
@@ -300,10 +304,19 @@ export default {
         podRassStats[statKey] = 0;
       }
     },
-    sumaStat() {
-      for (const statKey in this.podRassStats) {
-        this.rassStats[statKey] += this.podRassStats[statKey];
-      }
+    
+  
+  },
+  watch: {
+    wybRasa(newRasa) {
+      // Tutaj obserwujemy zmiany w wyborze rasy
+      this.sprawdzRase(newRasa, this.rassStats);
+      // Aktualizujemy rassStats na podstawie nowej rasy
+    },
+    podrasa(newPodrasa) {
+      // Tutaj obserwujemy zmiany w wyborze podrasy
+      this.sprawdzPodRase();
+      // Aktualizujemy podRassStats na podstawie nowej podrasy
     },
   },
 };

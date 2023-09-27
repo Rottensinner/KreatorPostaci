@@ -1,11 +1,13 @@
 <template>
   <div>
     <WybRasy @wyslanieDoNADCOS="WybranieRasy" />
+    <Statystyki></Statystyki>
   </div>
 </template>
 
 <script>
 import WybRasy from "@/components/WybRasy.vue";
+import Statystyki from "@/components/Statystyki.vue";
 import { ref } from "vue";
 
 export default {
@@ -26,16 +28,17 @@ export default {
   },
   components: {
     WybRasy,
+    Statystyki,
   },
   methods: {
     //
-    WybranieRasy(data, IsPodRasa, staty, podrasa) {
+    WybranieRasy(data, IsPodRasa, staty, podrasa, rassStats) {
       console.log("wybrana rasa:", data);
       this.Rasa = data;
       this.IsPodrasa = IsPodRasa;
       console.log("Posiada Podrasę:", IsPodRasa);
       for (const statKey in this.staty) {
-          this.staty[statKey] +=staty[statKey];
+          this.staty[statKey] =staty[statKey]+rassStats[statKey];
         console.log(statKey, ":",this.staty[statKey])
         
       }
