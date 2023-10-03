@@ -14,7 +14,6 @@
       <option value="Diabelstwo">Diabelstwo</option>
       <option value="Drakon">Drakon</option>
     </select>
-    <button @click="wyslanieDoNADCOS">Dalej</button>
   </div>
   <div v-if="wybRasa === 'Elf'">
     <p for="podrasa">Podrasa:</p>
@@ -206,26 +205,7 @@ export default {
     };
   },
   methods: {
-    wyslanieDoNADCOS() {
-      this.IsPodRasa = this.czyPodrasa(this.wybRasa);
-
-      if (this.IsPodRasa && this.podrasa === "") {
-        console.log("Wybierz podrasę");
-      } else if (!this.wybRasa) {
-        alert("Wybierz rasę");
-      } else {
-        this.sprawdzRase(this.wybRasa, this.rassStats);
-        
-        this.$emit(
-          "wyslanieDoNADCOS",
-          this.wybRasa,
-          this.IsPodRasa,
-          this.rassStats,
-          this.podrasa,
-          this.podRassStats
-        );
-      }
-    },
+    // sprawdzenie czy wybrana rasa ma podrasę.
     czyPodrasa(wybRasa) {
       const podrasaRasy = ["Elf", "Krasnolud", "Gnom", "Niziołek", "Drakon"];
       return podrasaRasy.includes(wybRasa);
@@ -311,11 +291,15 @@ export default {
     wybRasa(newRasa) {
       // Tutaj obserwujemy zmiany w wyborze rasy
       this.sprawdzRase(newRasa, this.rassStats);
+      console.log(this.wybRasa);
+
       // Aktualizujemy rassStats na podstawie nowej rasy
     },
     podrasa(newPodrasa) {
       // Tutaj obserwujemy zmiany w wyborze podrasy
       this.sprawdzPodRase();
+      console.log(this.podrasa);
+
       // Aktualizujemy podRassStats na podstawie nowej podrasy
     },
   },

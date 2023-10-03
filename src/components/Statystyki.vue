@@ -1,3 +1,4 @@
+import WybRasy from '@/components/WybRasy.vue';
 <template>  <p>Punkty doświadczenia: {{ punkty }}</p>
     <div class="kontener">
       <!-- Statystyki -->
@@ -10,7 +11,7 @@
               -
             </button>
             <div class="liczMod">{{ obliczSumeCechOsobno().STR }}</div>
-            <button @click="increaseStat('STR')" class="stat-button-p">
+            <button @click="increaseStat('STR')" class="stat-button-pz">
               +
             </button>
           </div>
@@ -82,7 +83,9 @@
       </div>
 </template>
 <script>
+import { ref, onMounted } from 'vue'; // Dodaj import ref
 export default {
+  
   data() {
     return {
       stats: {
@@ -97,24 +100,28 @@ export default {
     };
   },
   methods: {
-    decreaseStat(statName) {
-      if(this.stats[statName]>13){
-        this.stats[statName] --;
-        this.punkty +=2;
+     // Obsługa zdarzenia z komponentu WybRasy
+     dodajStatystyki(data) {
+      // Aktualizuj swoje statystyki na podstawie przekazanych danych
+      for (const statKey in this.stats) {
+        this.stats[statKey] += data.rassStats[statKey];
       }
-      else if (this.stats[statName] > 8 ) {
+      // Pozostałe działania na statystykach i punktach doświadczenia
+    },
+    decreaseStat(statName) {
+      if (this.stats[statName] > 13) {
+        this.stats[statName]--;
+        this.punkty += 2;
+      } else if (this.stats[statName] > 8) {
         this.stats[statName] -= 1;
         this.punkty++;
       }
     },
     increaseStat(statName) {
-      if (this.stats[statName] <13 && this.punkty>0) { // Przykładowy maksymalny poziom
+      if (this.stats[statName] < 13 && this.punkty > 0) {
+        // Przykładowy maksymalny poziom
         this.stats[statName] += 1;
         this.punkty--;
-      }
-      else if(this.stats[statName] >= 13 && this.stats[statName] < 15 && this.punkty>1){
-      this.stats[statName]+=1;
-    this.punkty -=2;
       }
     },
     obliczSumeCechOsobno() {
@@ -125,6 +132,21 @@ export default {
       }
       return sumy;
     },
+  },
+  setup() {
+    // Subskrybuj zdarzenie z komponentu WybRasy przy użyciu Composition API
+    const subskrypcja = ref(null);
+    
+    onMounted(() => {
+      const instance = getCurrentInstance();
+      if (instance) {
+        subskrypcja.value = instance.appContext.config.globalProperties.$on("wyslanieDoNADCOS", this.dodajStatystyki);
+      }
+    });
+
+    return {
+      subskrypcja,
+    };
   },
 };
 </script>

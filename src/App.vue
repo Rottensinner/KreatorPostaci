@@ -11,15 +11,14 @@ export default {
     WybRasy,
     NadCos, // Dodaj komponent Nad do sekcji components
     Statystyki,
-   // MojKompot
+    MojKompot
   }
 }
+
 </script>
 
 <template>
   <div class="App">
-
-    <NadCos/>
-    
+    <NadCos></NadCos>
   </div>
 </template>
