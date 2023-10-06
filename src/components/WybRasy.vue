@@ -212,13 +212,14 @@ export default {
         alert("Wybierz rase");
       } else {
         this.sprawdzRase(this.wybRasa, this.rassStats);
-        
+
         this.$emit(
           "wyslanieDoNADCOS",
           this.wybRasa,
           this.IsPodRasa,
           this.rassStats,
-          this.podrasa
+          this.podrasa,
+          this.podRassStats
         );
       }
     },
@@ -276,35 +277,34 @@ export default {
           break;
       }
     },
-    
 
     sprawdzPodRase() {
+      this.zerowanieStat(this.podRassStats);
       if (this.wybRasa === "Elf" && this.podrasa === "Leśny") {
-        this.podRassStats.MAD += 1;
+        this.podRassStats.MAD = 1;
       } else if (this.podrasa === "Wysoki") {
-        this.podRassStats.INTE += 1;
+        this.podRassStats.INTE = 1;
       } else if (this.podrasa === "Drow") {
-        this.podRassStats.CHA += 1;
+        this.podRassStats.CHA = 1;
       }
       //Podrasy Niziołków
       else if (this.podrasa === "Hardy") {
-        this.podRassStats.KON += 1;
+        this.podRassStats.KON = 1;
       } else if (this.podrasa === "Lekkostopy") {
-        this.podRassStats.CHA += 1;
+        this.podRassStats.CHA = 1;
       }
       //Podrasy Krasnoludów
       else if (this.podrasa === "Wzgórzowy") {
-        this.podRassStats.MAD += 1;
+        this.podRassStats.MAD = 1;
       } else if (this.podrasa === "Górski") {
-        this.podRassStats.STR += 2;
+        this.podRassStats.STR = 2;
       }
       //Podrasy Gnomów
       else if (this.wybRasa === "Gnom" && this.podrasa === "Leśny") {
-        this.podRassStats.ZRE += 1;
+        this.podRassStats.ZRE = 1;
       } else if (this.podrasa === "Skalny") {
-        this.podRassStats.KON += 1;
+        this.podRassStats.KON = 1;
       }
-      
     },
     zerowanieStat(podRassStats) {
       for (const statKey in podRassStats) {

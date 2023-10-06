@@ -29,18 +29,27 @@ export default {
   },
   methods: {
     //
-    WybranieRasy(data, IsPodRasa, staty, podrasa) {
-      console.log("wybrana rasa:", data);
-      this.Rasa = data;
-      this.IsPodrasa = IsPodRasa;
-
-      console.log("Posiada Podrasę:", IsPodRasa);
-      for (const statKey in this.staty) {
-          this.staty[statKey] +=staty[statKey];
-        console.log(statKey, ":",this.staty[statKey])
-        
+    WybranieRasy(data, IsPodRasa, rassStats, podrasa, podRassStats) {
+      if (this.Rasa == data && this.Podrasa == podrasa) {
+        alert("przepraszam");
+      } else if (this.Podrasa !== podrasa) {
+        this.Podrasa = podrasa;
+        for (const statKey in this.staty) {
+          this.staty[statKey] += rassStats[statKey] + podRassStats[statKey];
+          console.log(statKey, ":", this.staty[statKey]);
+        }
+      } else {
+        this.Rasa = data;
+        this.IsPodrasa = IsPodRasa;
+        this.Podrasa = podrasa;
+        console.log("wybrana rasa:", data);
+        console.log("Posiada Podrasę:", IsPodRasa);
+        for (const statKey in this.staty) {
+          this.staty[statKey] += rassStats[statKey] + podRassStats[statKey];
+          console.log(statKey, ":", this.staty[statKey]);
+        }
+        if (IsPodRasa) console.log("Podrasa ", podrasa);
       }
-      if (IsPodRasa) console.log("Podrasa ", podrasa);
     },
   },
 };
