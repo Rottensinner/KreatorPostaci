@@ -1,10 +1,14 @@
 {
     "zaklecia": [
       {
-        "name": "Magic Missile",
+        "name": "ALARM",
         "level": 1,
-        "description": "Fires a magic missile at the target.",
-        "damage": "1d4 + 1"
+        "description": "Nastawiasz alarm przeciw intruzom. Wybierz znajdujące się w zasięgu drzwi, okno lub obszar nie większy niż 6-metrowy sześcian. Przez cały czas trwania czar będzie cię ostrzegać, kiedy Mała lub lub większa istota dotknie strzeżonego obszaru lub do niego wejdzie. Rzucając czar, możesz określić istoty, które nie są intruzami. Wtedy decydujesz również, czy alarm jest dźwiękowy, czy ostrzega cię tylko mentalnie. Alarm mentalny wywola wrażenie dźwiękrr w twojej glowie, o ile pozostaniesz w obrębie 1,5 kilometra od strzeżonego obszaru. Obudzi cię, jeśli akurat będziesz spać. Alarm dźwiękowy przez 10 sekund wytwarza dźwięk dzwonka rozchodzący się na odległość 18 metrów.",
+        "damage": "",
+        "castingtime": "1 minuta",
+        "range": "9 metrów",
+        "components": "W, S, M (mały dzwoneczek i kawałek cienkiego srebrnego drutu)",
+        "duration": "8 godzin"
       },
       {
         "name": "Fireball",

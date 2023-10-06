@@ -1,5 +1,8 @@
 <template>
   <div>
+    <label>Imie</label>
+    <input type="text" />
+    <label>Rasa</label>
     <select name="rasa" id="rasa" placeholder="wybierz rase" v-model="wybRasa">
       <option value="Człowiek">Człowiek</option>
       <option value="Krasnolud">Krasnolud</option>
@@ -11,7 +14,6 @@
       <option value="Diabelstwo">Diabelstwo</option>
       <option value="Drakon">Drakon</option>
     </select>
-    <button @click="wyslanieDoNADCOS">Dalej</button>
   </div>
   <div v-if="wybRasa === 'Elf'">
     <p for="podrasa">Podrasa:</p>
@@ -175,13 +177,13 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 export default {
   emits: ["wyslanieDoNADCOS"],
   data() {
     return {
-      wybRasa: "", // Przypisz początkową wartość zmiennej wybRasa w sekcji data
+      wybRasa: "",
       IsPodRasa: false,
       podrasa: "",
       rassStats: {
@@ -203,6 +205,7 @@ export default {
     };
   },
   methods: {
+    // sprawdzenie czy wybrana rasa ma podrasę.
     wyslanieDoNADCOS() {
       this.IsPodRasa = this.czyPodrasa(this.wybRasa);
 
@@ -224,17 +227,8 @@ export default {
       }
     },
     czyPodrasa(wybRasa) {
-      if (
-        wybRasa === "Elf" ||
-        wybRasa === "Krasnolud" ||
-        wybRasa === "Gnom" ||
-        wybRasa === "Niziołek" ||
-        wybRasa === "Drakon"
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+      const podrasaRasy = ["Elf", "Krasnolud", "Gnom", "Niziołek", "Drakon"];
+      return podrasaRasy.includes(wybRasa);
     },
     sprawdzRase(wybRasa, rassStats) {
       for (const statKey in rassStats) {
@@ -280,29 +274,39 @@ export default {
 
     sprawdzPodRase() {
       this.zerowanieStat(this.podRassStats);
+      this.zerowanieStat(this.podRassStats);
       if (this.wybRasa === "Elf" && this.podrasa === "Leśny") {
+        this.podRassStats.MAD = 1;
         this.podRassStats.MAD = 1;
       } else if (this.podrasa === "Wysoki") {
         this.podRassStats.INTE = 1;
+        this.podRassStats.INTE = 1;
       } else if (this.podrasa === "Drow") {
         this.podRassStats.CHA = 1;
+        this.podRassStats.CHA = 1;
       }
-      //Podrasy Niziołków
+      // Podrasy Niziołków
       else if (this.podrasa === "Hardy") {
+        this.podRassStats.KON = 1;
         this.podRassStats.KON = 1;
       } else if (this.podrasa === "Lekkostopy") {
         this.podRassStats.CHA = 1;
+        this.podRassStats.CHA = 1;
       }
-      //Podrasy Krasnoludów
+      // Podrasy Krasnoludów
       else if (this.podrasa === "Wzgórzowy") {
+        this.podRassStats.MAD = 1;
         this.podRassStats.MAD = 1;
       } else if (this.podrasa === "Górski") {
         this.podRassStats.STR = 2;
+        this.podRassStats.STR = 2;
       }
-      //Podrasy Gnomów
+      // Podrasy Gnomów
       else if (this.wybRasa === "Gnom" && this.podrasa === "Leśny") {
         this.podRassStats.ZRE = 1;
+        this.podRassStats.ZRE = 1;
       } else if (this.podrasa === "Skalny") {
+        this.podRassStats.KON = 1;
         this.podRassStats.KON = 1;
       }
     },
@@ -310,6 +314,22 @@ export default {
       for (const statKey in podRassStats) {
         podRassStats[statKey] = 0;
       }
+    },
+  },
+  watch: {
+    wybRasa(newRasa) {
+      // Tutaj obserwujemy zmiany w wyborze rasy
+      this.sprawdzRase(newRasa, this.rassStats);
+      console.log(this.wybRasa);
+
+      // Aktualizujemy rassStats na podstawie nowej rasy
+    },
+    podrasa(newPodrasa) {
+      // Tutaj obserwujemy zmiany w wyborze podrasy
+      this.sprawdzPodRase();
+      console.log(this.podrasa);
+
+      // Aktualizujemy podRassStats na podstawie nowej podrasy
     },
   },
 };
