@@ -19,6 +19,6 @@ export default {
 
 <template>
   <div class="App">
-    <NadCos></NadCos>
+    <MojKompot></MojKompot>
   </div>
 </template>
